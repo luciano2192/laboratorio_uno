@@ -75,3 +75,30 @@ que retorna ?
 		suma( op1 , op2 );
 		
 		
+PARAMETROS FORMALES:
+	los que estan en el prototipo y la definicion.
+
+	NOTA: Las variables definidas como parámetros formales de la 
+	función son variables locales de la misma.
+
+PARAMETROS ACTUALES:
+	los que estan en la llamada, que van a variar.
+
+
+VARIABLES LOCALES Y GLOBALES (scope)
+
+	LOCALES: 
+		Todas las variables que se encuentren definidas dentro de 
+		las llaves de una función (recordar que main también es 
+		una función) tienen validez dentro de dicha función y se 
+		llaman variables locales, al ámbito donde dichas variables 
+		son visibles, se lo conoce como SCOPE.
+
+	GLOBALES:
+		(*NO SE RECOMIENDA USARLAS)
+		Si una variable puede ser usada desde cualquier función 
+		y durante el transcurso de todo el programa, esa es una 
+		variable global. Las variables globales de definen fuera 
+		de cualquier función , normalmente debajo de los include 
+		que se colocan al comienzo del programa.
+
