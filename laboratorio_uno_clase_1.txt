@@ -1,0 +1,77 @@
+getch() y getche() se encuentran definidas en el fichero de cabecera: 
+"conio.h" (librería de Borland) y la función getchar() se encuentra 
+definida en "stdio.h"
+
+La función getch(): lee caracter a caracter pero no muestra por pantalla 
+el carácter leido.
+
+EJ: variable = getch();
+
+La función getche(): lee carácter a carácter y muestra por pantalla 
+el carácter leido.
+
+La función getchar(): lee caracter a caracter, hace un barrido, tras 
+haber detectado fin ( intro ).
+
+
+º------------------ºº------------------ºº------------------º
+
+
+FUNCIONES
+
+que realiza ?
+que recibe ?
+que retorna ?
+
+* acumuladores y contadores: 
+	inicializarlos en 0 para que no tome otro valor de memoria
+
+
+	hay 3 momentos ---> A) prototipo / declaracion
+			    B) cuerpo / definicion
+		 	    C) llamada
+
+	
+	
+	EJ: funcion que suma
+	
+	
+	int main() {
+	
+		int op1, op2, res;
+		printf("operador 1: ");
+		scanf("%d",&op1);
+		printf("operador 2: ");
+		scanf("%d",&op2);
+		res = op1 + op2;
+		printf("la suma es: %d", res);
+	
+		return 0;
+	}
+
+	?...ahora vamos a hacerla con las 3 etapas
+
+	PROTOTIPO: 
+	Siempre antes del main, para luego poder invocarla.
+	No hace falta declarar el nombre de los parametros,
+	puedo declarar solo el tipo de dato.
+	
+		int suma( int operador1 , int operador2 );
+
+
+	DEFINICION:
+	siempre abajo del main
+	
+		int suma( int operador1 , int operador2 ) {
+			
+			int resultado;
+			resultado = operador1 + operador2;
+			return resultado;
+		}
+
+
+	LLAMADA:
+		
+		suma( op1 , op2 );
+		
+		
