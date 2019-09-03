@@ -11,7 +11,7 @@ int resultadoMultiplicacion = 0;
 int resultadoDivision = 0;
 int resultadoFactorial = 0;
 int resultadoFactorialDos = 0;
-char[40] errorDivision;
+char msjError[] = "ERROR !.";
 
 int main()
 {
@@ -38,15 +38,15 @@ int main()
             case 3:
                 resultadoSuma = suma( operandoUno , operandoDos );
                 resultadoResta = resta( operandoUno , operandoDos );
-                if ( operandoDos == 0 ) {
-                    resultadoDivision = (char) "ERROR ! no se puede dividir por cero";
-                    break;
-                } else {
-                    resultadoDivision = (float) division( operandoUno , operandoDos );
-                }
                 resultadoMultiplicacion = multiplicacion( operandoUno , operandoDos );
                 resultadoFactorial = factorial( operandoUno );
                 resultadoFactorialDos = factorial( operandoDos );
+                if( operandoDos > 0 ) {
+                    resultadoDivision = (float) division( operandoUno , operandoDos );
+                } else {
+                    resultadoDivision = (char) msjError;
+                    break;
+                }
                 system("cls");
                 break;
             case 4:

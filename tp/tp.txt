@@ -1,3 +1,7 @@
 FUNCIONES.C ---> desarrollo / definiciones de las funciones
 FUNCIONES.H ---> prototipos de las funciones
 MAIN.C ---> include funciones.h
+
+PARCIALES:
+	programacion 1 de octubre
+	laboratorio 7 y 8 de octubre
