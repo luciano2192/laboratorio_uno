@@ -11,6 +11,7 @@ int resultadoMultiplicacion = 0;
 int resultadoDivision = 0;
 int resultadoFactorial = 0;
 int resultadoFactorialDos = 0;
+char[40] errorDivision;
 
 int main()
 {
@@ -22,7 +23,6 @@ int main()
         printf("\n5) Salir.\n");
         printf("\nSeleccionar una opcion <1-5>: ");
         scanf( "%d" , &menu );
-        system("cls");
 
         switch( menu ) {
             case 1:
@@ -39,7 +39,7 @@ int main()
                 resultadoSuma = suma( operandoUno , operandoDos );
                 resultadoResta = resta( operandoUno , operandoDos );
                 if ( operandoDos == 0 ) {
-                    printf("ERROR ! no se puede dividir por cero");
+                    resultadoDivision = (char) "ERROR ! no se puede dividir por cero";
                     break;
                 } else {
                     resultadoDivision = (float) division( operandoUno , operandoDos );
