@@ -1,0 +1,63 @@
+CADENA DE CARACTERES
+
+	tipos nativos:
+		-int
+		-char
+		-float
+		-double
+		-void
+
+	
+	el tipo de dato string no existe
+	lo podemos "fabricar" con un array de char
+	
+	EJ: char nombre[31]
+	
+		* el ultimo elemento del array que se carga
+		automaticamente es "\0", sirve para saber hasta donde
+		tiene que imprimir / leer del array, sino imprimiria
+		todos los valores guardados en memoria desde el primer valor
+		del array.
+		
+		*hay que tener en cuenta que el "\0" va a ocupar
+		un lugar en el array.
+
+		*scanf() toma hasta el primer espacio en blanco o enter.
+
+	- gets( variable ) // me va a tomar la cadena con el espacio. 
+	no se usa, es insegura, solo es para windows.
+
+	- fgets( cadena , cantidad , stdin ) // va a cortar donde la
+	cantidad diga. El problema es que me agrega un ENTER al
+	finalizar la cadena y despues C agrega "\0". La solucion
+	es reemplazar el ENTER por el "\0".
+
+	int strlen( cadena )  // devuelve la cantidad de caracteres 
+	de la cadena.	
+
+	* antes de usar scanf() limpiar el buffer con fflush(stdin); 
+
+
+	PARA COMPARAR CADENAS:
+
+		- puedo comparar un solo caracter con otro
+		
+		EJ: if ( nombre[0] == nombre[0] )
+		
+		- para comparar toda la cadena puedo usar strcmp( cad1,cad2 ) 
+
+		EJ: int strcmp ( cad1 , cad2 ) // si son iguales
+		devuelve un 0. Si cad1 > cad2 devuelve valor mayor a 0.
+		Si cad1 < cad2 devuelve valor menor a 0.
+
+	*los caracteres en mayuscula tienen menor valor que los caracteres
+	en minuscula, esto se basa en la tabla de ASCII. 
+
+	"Algo" < "algo"
+
+	"ana" > "ZACARIAS"
+
+	"Alberto" < "zoe"
+
+	*compara elemento por elemento hasta que encuentra una diferencia
+		
