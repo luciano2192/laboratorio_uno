@@ -60,4 +60,84 @@ CADENA DE CARACTERES
 	"Alberto" < "zoe"
 
 	*compara elemento por elemento hasta que encuentra una diferencia
+
+	
+	* el operador "=" no lo puedo usar con las cadenas de caracteres
+	
+	EJ: nombre = "pepe"
+
+	para un "char" si lo puedo hacer
+
+	EJ: nombre[10]="\0"
+
+	strcpy( destino , origen ) 
+	
+	destino tiene que ser una variable
+	origen puede ser ---> literal , constante o variable
+
+	si a nombre le quiero asignar la cadena pepe uso esa funcion
+
+	EJ: strcpy( nombre , "pepe" );
+
+
+	------
+
+	OTRAS FUNCIONES:
+		Me sirven para normalizar los datos
+		include string.h
+
+	- strupr // pasa la cadena a mayuscula
+
+	- strlwr // pasa la cadena a minuscula
+
+		EJ:
+			strupr( nombre ); // el parametro es un vector,
+					  por lo tanto una direccion en
+					  memoria, por eso no tengo que
+					  asignar el valor a la variable
+					  nuevamente. Trabajo con una
+					  referencia.
+
+	para manipular un solo caracter:
+		include ctype.h
+
+		toupper // un solo caracter a mayuscula
+
+		tolower // un solo caracter a minuscula	
+
+		EJ: 
+			letra = toupper(letra); // trabajo con una copia
+						por eso tengo que asignar
+						el valor a la variable para
+						pisarla.
+			
+			letra = tolower(letra);
+
+
+	trim // saca los espacios en blanco de izq y der.
+
+	ltrim // saca los espacios en blanco de la izq.
+
+	rtrim // saca los espacios en blanco de la der.
+
+	
+	strcat( destino , origen ) // sirve para concatenar
+
+	EJ: 
+		char nombre[31] = "Juan";
+		char apellido[31] = "Perez";
+		char apNombre[62];
+		
+		//antes debo asignarle con strcpy un valor a apNombre
+		sino me trae lo que este cargado en memoria.
+		puedo hacer lo siguiente:
+
+		apNombre[0] = "\0";
+			o tambien
+		strcopy( apNombre , apellido );
+		
+		strcat( apNombre , apellido );
+		strcat( apNombre , " " );
+		strcat( apNombre , nombre );
+			
 		
