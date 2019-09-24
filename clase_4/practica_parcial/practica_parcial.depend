@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1569366854 source:d:\laboratorio_uno\clase_4\practica_parcial\parcial.c
+	<stdio.h>
+	<stdlib.h>
+	"practica.h"
+
+1569366734 d:\laboratorio_uno\clase_4\practica_parcial\practica.h
+
+1569366770 source:d:\laboratorio_uno\clase_4\practica_parcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"practica.h"
+

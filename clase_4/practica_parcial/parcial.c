@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "practica.h"
 
-void inicializar( ePersona pers[] , int cantidad ) {
+void inicializar( eEmpleado pers[] , int cantidad ) {
     int i;
 
     for( i = 0 ; i < cantidad ; i++ ) {
@@ -10,7 +10,7 @@ void inicializar( ePersona pers[] , int cantidad ) {
     }
 }
 
-void alta( ePersona pers[], int cantidad ){
+void alta( eEmpleado pers[], int cantidad ){
     int i;
     int flag = 0;
 
@@ -24,17 +24,14 @@ void alta( ePersona pers[], int cantidad ){
                 fflush(stdin);
                 scanf("%s", pers[i].nombre);
 
-                printf("\nEdad: ");
-                scanf("%d", &pers[i].edad);
-
                 printf("\nDia: ");
-                scanf("%d", &pers[i].fechaNacimiento.dia);
+                scanf("%d", &pers[i].fechaIngreso.dia);
 
                 printf("\nMes: ");
-                scanf("%d", &pers[i].fechaNacimiento.mes);
+                scanf("%d", &pers[i].fechaIngreso.mes);
 
                 printf("\nAnio: ");
-                scanf("%d", &pers[i].fechaNacimiento.anio);
+                scanf("%d", &pers[i].fechaIngreso.anio);
 
                 pers[i].isEmpty = 0;
                 flag = 1;
@@ -45,7 +42,7 @@ void alta( ePersona pers[], int cantidad ){
         }
 }
 
-void mostrarTodos( ePersona pers[], int cantidad ){
+void mostrarTodos( eEmpleado pers[], int cantidad ){
     int i;
 
     for( i = 0; i < cantidad; i++ ){
@@ -55,13 +52,14 @@ void mostrarTodos( ePersona pers[], int cantidad ){
     }
 }
 
-void mostrarUno( ePersona per ){
-        printf("%s\t%s\t%d\t%d\n", per.apellido, per.nombre, per.edad, per.isEmpty);
+void mostrarUno( eEmpleado per ){
+        printf("%s\t%s\t%d\t%d\n", per.apellido, per.nombre, per.isEmpty);
 }
 
-void ordenarPersonaPorEdad( ePersona pers[] , int cantidad ) {
+/*
+void ordenarPersonaPorEdad( eEmpleado pers[] , int cantidad ) {
     int i,j;
-    ePersona auxPers;
+    eEmpleado auxPers;
 
     for( i = 0 ; i < cantidad-1 ; i++ ) {
         for( j = i + 1 ; i < cantidad ; j++ ) {
@@ -73,7 +71,7 @@ void ordenarPersonaPorEdad( ePersona pers[] , int cantidad ) {
         }
     }
 }
-
+*/
 int menu() {
     int menu;
 
@@ -87,8 +85,8 @@ int menu() {
 
     return menu;
 }
-
-void filtrarPorPais( ePersona pers[] , int cantidadPersonas , ePais pais[] , int cantidadPaises ) {
+/*
+void filtrarPorPais( eEmpleado pers[] , int cantidadPersonas , ePais pais[] , int cantidadPaises ) {
     int i , j;
     int auxPais;
 
@@ -105,8 +103,8 @@ void filtrarPorPais( ePersona pers[] , int cantidadPersonas , ePais pais[] , int
         }
     }
 }
-
-void baja( ePersona pers[] , int cantidad ) {
+*/
+void baja( eEmpleado pers[] , int cantidad ) {
 
     int auxId, i , flag = 0;
     char respuesta;
@@ -135,8 +133,8 @@ void baja( ePersona pers[] , int cantidad ) {
         printf("El dato no existe");
     }
 }
-
-void modificacion( ePersona pers[] , int cantidad ) {
+/*
+void modificacion( eEmpleado pers[] , int cantidad ) {
     int auxId, menuMod, i , flag = 0;
     char respuesta;
 
@@ -184,7 +182,7 @@ void modificacion( ePersona pers[] , int cantidad ) {
         printf("El dato no existe");
     }
 }
-
+*/
 int menuModificacion() {
     int menu;
 
@@ -207,4 +205,34 @@ int obtenerUltimoLegajo( eEmpleado e[] , int cantidad ) {
 
         }
     }
+};
+
+void mostrarSector( eSector s ){
+    printf("%d\t%s\n", s.cod, s.descripcion );
+};
+
+void mostrarSectores( eSector s[], int cantidad ){
+    int i;
+
+    for( i = 0; i < cantidad; i++ ){
+        mostrarSector( s[i] );
+    }
 }
+
+int empleadosPorSector( eSector sector[] , int cantidadSector , eEmpleado empleado[] , int cantidadEmpleados ) {
+
+    int i , j , auxSector;
+    mostrarSectores( sector , cantidadSector );
+    printf( "Seleccione un sector: " );
+    scanf( "%d" , &auxSector );
+    fflush(stdin);
+    for ( i = 0 ; i < cantidadSector ; i++ ) {
+        if ( sector[i].cod == auxSector ) {
+            for ( j = 0 ; j < cantidadEmpleados ; j++ ) {
+                if ( empleado[j].idSector == auxSector ) {
+                    printf( "%s\t%s\t%s\n", empleado[j].nombre , empleado[j].apellido , sector[i].descripcion );
+                }
+            }
+        }
+    }
+};

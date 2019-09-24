@@ -18,7 +18,8 @@ typedef struct{
 }eMenu;
 
 typedef struct{
-    int cod,descripcion;
+    int cod;
+    char descripcion[51];
 }eSector;
 
 typedef struct{
@@ -27,18 +28,20 @@ typedef struct{
 
 int menu();
 
-void inicializar( ePersona pers[] , int cantidad );
+void inicializar( eEmpleado pers[] , int cantidad );
 
-void alta( ePersona pers[], int cantidad );
+void alta( eEmpleado pers[], int cantidad );
 
-void mostrarUno( ePersona per );
+void mostrarUno( eEmpleado per );
 
-void mostrarTodos( ePersona pers[], int cantidad );
+void mostrarTodos( eEmpleado pers[], int cantidad );
 
-void ordenarPersonaPorEdad (ePersona pers[] , int cantidad);
+void ordenarPersonaPorEdad (eEmpleado pers[] , int cantidad);
 
-void modificacion( ePersona pers[] , int cantidad );
+void modificacion( eEmpleado pers[] , int cantidad );
 
 int menuModificacion();
 
-void baja( ePersona pers[] , int cantidad );
+void baja( eEmpleado pers[] , int cantidad );
+
+void empleadosPorSector( eSector sector[] , int cantidadSector , eEmpleado empleado[] , int cantidadEmpleados );
