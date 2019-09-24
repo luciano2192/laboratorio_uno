@@ -25,4 +25,20 @@ typedef struct{
     int id, menuId, empleadoId, eFecha;
 }eAlmuerzo;
 
-void autoincrementar( struct x[] , int id );
+int menu();
+
+void inicializar( ePersona pers[] , int cantidad );
+
+void alta( ePersona pers[], int cantidad );
+
+void mostrarUno( ePersona per );
+
+void mostrarTodos( ePersona pers[], int cantidad );
+
+void ordenarPersonaPorEdad (ePersona pers[] , int cantidad);
+
+void modificacion( ePersona pers[] , int cantidad );
+
+int menuModificacion();
+
+void baja( ePersona pers[] , int cantidad );
