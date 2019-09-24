@@ -197,3 +197,14 @@ int menuModificacion() {
 
     return menu;
 }
+
+int obtenerUltimoLegajo( eEmpleado e[] , int cantidad ) {
+
+    int i, flag = 0;
+
+    for( i = 0 ; i < cantidad ; i++ ) {
+        if( e[i].isEmpty != 1 && flag != 0 ) {
+
+        }
+    }
+}
