@@ -1,0 +1,29 @@
+# depslib dependency file v1.0
+1532913862 source:c:\users\nico\desktop\parciales\1erparcial\parciallaboratorio\automovil.c
+	"automovil.h"
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+
+1532913862 c:\users\nico\desktop\parciales\1erparcial\parciallaboratorio\automovil.h
+	"propietario.h"
+
+1532913862 c:\users\nico\desktop\parciales\1erparcial\parciallaboratorio\propietario.h
+
+1532913862 source:c:\users\nico\desktop\parciales\1erparcial\parciallaboratorio\main.c
+	<stdio.h>
+	<stdlib.h>
+	"egresos.h"
+
+1532913862 c:\users\nico\desktop\parciales\1erparcial\parciallaboratorio\egresos.h
+	"automovil.h"
+
+1532913862 source:c:\users\nico\desktop\parciales\1erparcial\parciallaboratorio\propietario.c
+	<stdio.h>
+	<string.h>
+	"propietario.h"
+
+1543968394 source:c:\users\nico\desktop\parciales\1erparcial\parciallaboratorio\egresos.c
+	<stdio.h>
+	"egresos.h"
+

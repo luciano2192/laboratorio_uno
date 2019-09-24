@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1568764922 source:d:\programacion_uno\clase_5\ejercicio_2\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ejercicio.h"
+
+1568764684 d:\programacion_uno\clase_5\ejercicio_2\ejercicio.h
+
+1568764879 source:d:\programacion_uno\clase_5\ejercicio_2\ejercicio.c
+	<stdio.h>
+	<stdlib.h>
+	"ejercicio.h"
+
+1569281296 source:d:\laboratorio_uno\clase_4\ejercicio_2_repo_programacion\main.c
+	<stdio.h>
+	<stdlib.h>
+	"ejercicio.h"
+
+1569282862 d:\laboratorio_uno\clase_4\ejercicio_2_repo_programacion\ejercicio.h
+
