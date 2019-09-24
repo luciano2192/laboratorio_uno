@@ -4,13 +4,14 @@ typedef struct{
 
 typedef struct{
     int id;
-    char apellido[31];
-    char nombre[31];
-    int edad;
-    eFecha fechaNacimiento;
-    int ePaisId;
+    char apellido[51];
+    char nombre[51];
+    char sexo;
+    float salario;
+    eFecha fechaIngreso;
+    int idSector;
     int isEmpty;
-}ePersona;
+}eEmpleado;
 
 typedef struct{
     int cod,descripcion,importe;
@@ -23,3 +24,5 @@ typedef struct{
 typedef struct{
     int id, menuId, empleadoId, eFecha;
 }eAlmuerzo;
+
+void autoincrementar( struct x[] , int id );

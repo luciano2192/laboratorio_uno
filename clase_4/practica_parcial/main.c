@@ -1,8 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "practica.h"
 
 int main()
 {
-    printf("Hello world!\n");
+
+    eSector sector[5] = {
+        {  };
+        { };
+        { };
+        { };
+    }
+
+
     return 0;
 }
