@@ -36,8 +36,9 @@ int main()
         { 4 , "Otra" , "Carolina" , 'F' , 15 , 03 , 2003 , 3 },
     };
 
-    //empleadosPorSector( sector , CANT , empleado , CANT );
+    empleadosPorSector( sector , CANT , empleado , CANT );
 
     menuPorEmpleado( menu , CANT , almuerzo , CANT , empleado , CANT );
+
     return 0;
 }
