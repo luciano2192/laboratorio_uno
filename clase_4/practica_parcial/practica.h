@@ -14,7 +14,9 @@ typedef struct{
 }eEmpleado;
 
 typedef struct{
-    int cod,descripcion,importe;
+    int cod;
+    char descripcion[51];
+    float importe;
 }eMenu;
 
 typedef struct{
@@ -45,3 +47,9 @@ int menuModificacion();
 void baja( eEmpleado pers[] , int cantidad );
 
 void empleadosPorSector( eSector sector[] , int cantidadSector , eEmpleado empleado[] , int cantidadEmpleados );
+
+void menuPorEmpleado( eMenu menu[] , int cantMenu , eAlmuerzo almuerzo[] , int cantAlmuerzo , eEmpleado empleado[] , int cantEmpleado );
+
+void mostrarMenues( eMenu m[], int cantidad );
+
+void mostrarMenues( eMenu m[], int cantidad );

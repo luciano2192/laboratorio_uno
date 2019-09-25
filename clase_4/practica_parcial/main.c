@@ -22,6 +22,13 @@ int main()
         { 4 , "Empanadas fritas de carne" , 45.99 },
     };
 
+    eAlmuerzo almuerzo[CANT] = {
+        { 1 , 4 , 1 , 20190621 },
+        { 2 , 3 , 2 , 20190505 },
+        { 3 , 2 , 3 , 20181205 },
+        { 4 , 1 , 4 , 20170403 },
+    };
+
     eEmpleado empleado[CANT] = {
         { 1 , "Perez" , "Lucas" , 'M' , 02 , 11 , 2018 , 2 },
         { 2 , "Gomez" , "Santiago" , 'M' , 05 , 06 , 2014 , 4 },
@@ -29,7 +36,8 @@ int main()
         { 4 , "Otra" , "Carolina" , 'F' , 15 , 03 , 2003 , 3 },
     };
 
-    empleadosPorSector( sector , CANT , empleado , CANT );
+    //empleadosPorSector( sector , CANT , empleado , CANT );
 
+    menuPorEmpleado( menu , CANT , almuerzo , CANT , empleado , CANT );
     return 0;
 }

@@ -229,9 +229,43 @@ void empleadosPorSector( eSector sector[] , int cantidadSector , eEmpleado emple
 
     for ( i = 0 ; i < cantidadSector ; i++ ) {
         if ( sector[i].cod == aux ) {
-            for ( j = 0 ; j < cantidadEmpleados ; j++ ) {
+            for ( j = 0 ; j < cantidadEmpleados ; j++ ) { // falta agregar isEmpty
                 if ( empleado[j].idSector == aux ) {
                     printf( "%s\t%s\t%s\n", empleado[j].nombre , empleado[j].apellido , sector[i].descripcion );
+                }
+            }
+        }
+    }
+};
+
+void mostrarMenu( eMenu m ){
+    printf( "%d\t%s\t%.2f\n", m.cod, m.descripcion , m.importe );
+};
+
+void mostrarMenues( eMenu m[], int cantidad ){
+    int i;
+
+    for( i = 0; i < cantidad; i++ ){
+        mostrarMenu( m[i] );
+    }
+};
+
+void menuPorEmpleado( eMenu menu[] , int cantMenu , eAlmuerzo almuerzo[] , int cantAlmuerzo , eEmpleado empleado[] , int cantEmpleado ) {
+
+    int i , j , k ,auxMenu;
+    mostrarMenues( menu , cantMenu );
+    printf( "Seleccione un menu: " );
+    scanf( "%d" , &auxMenu );
+
+    for ( i = 0 ; i < cantMenu ; i++ ) {
+        if ( auxMenu == menu[i].cod ) {
+            for ( j = 0 ; j < cantAlmuerzo ; j++ ) { // falta agregar isEmpty
+                if ( auxMenu == almuerzo[j].menuId ) {
+                    for ( k = 0 ; k < cantEmpleado ; k++ ) {
+                        if ( almuerzo[j].empleadoId == empleado[k].id ) { // falta agregar isEmpty
+                            printf( "%s\t%s\n" , empleado[k].nombre , menu[i].descripcion );
+                        }
+                    }
                 }
             }
         }
