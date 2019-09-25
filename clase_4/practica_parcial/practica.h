@@ -7,10 +7,10 @@ typedef struct{
     char apellido[51];
     char nombre[51];
     char sexo;
-    float salario;
+    //float salario;
     eFecha fechaIngreso;
     int idSector;
-    int isEmpty;
+    //int isEmpty;
 }eEmpleado;
 
 typedef struct{

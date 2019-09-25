@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "practica.h"
-
+/*
 void inicializar( eEmpleado pers[] , int cantidad ) {
     int i;
 
     for( i = 0 ; i < cantidad ; i++ ) {
         pers[i].isEmpty = 1;
     }
-}
-
+}*/
+/*
 void alta( eEmpleado pers[], int cantidad ){
     int i;
     int flag = 0;
@@ -40,8 +40,8 @@ void alta( eEmpleado pers[], int cantidad ){
         if(flag == 0) {
             printf("No hay espacio suficiente");
         }
-}
-
+}*/
+/*
 void mostrarTodos( eEmpleado pers[], int cantidad ){
     int i;
 
@@ -50,11 +50,11 @@ void mostrarTodos( eEmpleado pers[], int cantidad ){
             mostrarUno(pers[i]);
         }
     }
-}
-
+}*/
+/*
 void mostrarUno( eEmpleado per ){
         printf("%s\t%s\t%d\t%d\n", per.apellido, per.nombre, per.isEmpty);
-}
+}*/
 
 /*
 void ordenarPersonaPorEdad( eEmpleado pers[] , int cantidad ) {
@@ -104,6 +104,7 @@ void filtrarPorPais( eEmpleado pers[] , int cantidadPersonas , ePais pais[] , in
     }
 }
 */
+/*
 void baja( eEmpleado pers[] , int cantidad ) {
 
     int auxId, i , flag = 0;
@@ -132,7 +133,7 @@ void baja( eEmpleado pers[] , int cantidad ) {
     if( flag == 0 ) {
         printf("El dato no existe");
     }
-}
+}*/
 /*
 void modificacion( eEmpleado pers[] , int cantidad ) {
     int auxId, menuMod, i , flag = 0;
@@ -195,7 +196,7 @@ int menuModificacion() {
 
     return menu;
 }
-
+/*
 int obtenerUltimoLegajo( eEmpleado e[] , int cantidad ) {
 
     int i, flag = 0;
@@ -205,7 +206,7 @@ int obtenerUltimoLegajo( eEmpleado e[] , int cantidad ) {
 
         }
     }
-};
+};*/
 
 void mostrarSector( eSector s ){
     printf("%d\t%s\n", s.cod, s.descripcion );
@@ -217,22 +218,24 @@ void mostrarSectores( eSector s[], int cantidad ){
     for( i = 0; i < cantidad; i++ ){
         mostrarSector( s[i] );
     }
-}
+};
 
-int empleadosPorSector( eSector sector[] , int cantidadSector , eEmpleado empleado[] , int cantidadEmpleados ) {
+void empleadosPorSector( eSector sector[] , int cantidadSector , eEmpleado empleado[] , int cantidadEmpleados ) {
 
-    int i , j , auxSector;
+    int i , j , aux;
     mostrarSectores( sector , cantidadSector );
     printf( "Seleccione un sector: " );
-    scanf( "%d" , &auxSector );
-    fflush(stdin);
+    scanf( "%d" , &aux );
+
     for ( i = 0 ; i < cantidadSector ; i++ ) {
-        if ( sector[i].cod == auxSector ) {
+        if ( sector[i].cod == aux ) {
             for ( j = 0 ; j < cantidadEmpleados ; j++ ) {
-                if ( empleado[j].idSector == auxSector ) {
+                if ( empleado[j].idSector == aux ) {
                     printf( "%s\t%s\t%s\n", empleado[j].nombre , empleado[j].apellido , sector[i].descripcion );
                 }
             }
         }
     }
 };
+
+
