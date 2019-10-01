@@ -1,7 +1,7 @@
 typedef struct{
     int dia,mes,anio;
 }eFecha;
-
+/*
 typedef struct{
     int id;
     char apellido[51];
@@ -10,6 +10,14 @@ typedef struct{
     //float salario;
     eFecha fechaIngreso;
     int idSector;
+    int isEmpty;
+}eEmpleado;
+*/
+typedef struct{
+    int id;
+    char apellido[51];
+    char nombre[51];
+    eFecha fechaIngreso;
     int isEmpty;
 }eEmpleado;
 

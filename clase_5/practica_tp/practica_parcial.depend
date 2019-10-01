@@ -11,14 +11,15 @@
 	<stdlib.h>
 	"practica.h"
 
-1569884427 source:d:\laboratorio_uno\clase_5\practica_tp\main.c
+1569887913 source:d:\laboratorio_uno\clase_5\practica_tp\main.c
 	<stdio.h>
 	<stdlib.h>
+	<ctype.h>
 	"practica.h"
 
-1569887540 d:\laboratorio_uno\clase_5\practica_tp\practica.h
+1569888008 d:\laboratorio_uno\clase_5\practica_tp\practica.h
 
-1569887478 source:d:\laboratorio_uno\clase_5\practica_tp\parcial.c
+1569887682 source:d:\laboratorio_uno\clase_5\practica_tp\parcial.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>

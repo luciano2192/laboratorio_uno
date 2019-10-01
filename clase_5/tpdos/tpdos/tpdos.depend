@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1569888471 source:d:\laboratorio_uno\clase_5\tpdos\tpdos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"tpdos.h"
+
+1569888565 d:\laboratorio_uno\clase_5\tpdos\tpdos\tpdos.h
+
+1569889318 source:d:\laboratorio_uno\clase_5\tpdos\tpdos\tpdos.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"tpdos.h"
+
