@@ -27,7 +27,7 @@ int aumentar( eEmpleado empleado[] , int cantidad ) {
             maximo = empleado[i].id;
         }
     }
-    return maximo+1;
+    return maximo + 1;
 };
 
 
@@ -127,11 +127,17 @@ void mostrarUno( eEmpleado empleado ){
 }
 
 void mostrarTodos( eEmpleado empleado[], int cantidad ){
-    int i;
+    int i , flag = 0;
 
     for( i = 0 ; i < cantidad ; i++ ){
         if( empleado[i].isEmpty == 0 ) {
             mostrarUno( empleado[i] );
+        } else {
+            flag = 1;
         }
+    }
+
+    if (flag == 1) {
+        printf("no hay datos cargados.");
     }
 };
