@@ -21,6 +21,8 @@ int menuABM();
 
 void alta( eEmpleado empleado[], int cantidad );
 
-void mostrarUno( eEmpleado empleado );
+void baja( eEmpleado empleado[] , int cantidad );
 
 void mostrarUno( eEmpleado empleado );
+
+void mostrarTodos( eEmpleado empleado[], int cantidad );

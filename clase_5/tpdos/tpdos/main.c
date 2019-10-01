@@ -20,6 +20,10 @@ int main()
                 alta( empleado , CANT );
                 break;
             case 2:
+                baja( empleado , CANT );
+                break;
+            case 4:
+                mostrarTodos( empleado , CANT );
                 break;
             case 5:
                 break;

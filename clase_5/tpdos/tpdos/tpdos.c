@@ -23,12 +23,11 @@ int aumentar( eEmpleado empleado[] , int cantidad ) {
     int i, maximo = 0;
 
     for( i = 0 ; i < cantidad ; i++ ) {
-
-        if( empleado[i].isEmpty == 0 && empleado[i].id > maximo ) {
+        if( (empleado[i].isEmpty == 0) && (empleado[i].id > maximo) ) {
             maximo = empleado[i].id;
         }
     }
-    return maximo++;
+    return maximo+1;
 };
 
 
@@ -69,7 +68,7 @@ void alta( eEmpleado empleado[], int cantidad ){
                 printf("\nAnio: ");
                 scanf( "%d" , &empleado[i].fechaIngreso.anio );
 
-                aumentar( empleado , cantidad );
+                empleado[i].id = aumentar( empleado , cantidad );
                 empleado[i].isEmpty = 0;
                 flag = 1;
                 break;
@@ -80,8 +79,51 @@ void alta( eEmpleado empleado[], int cantidad ){
         }
 };
 
+void baja( eEmpleado empleado[] , int cantidad ) {
+
+    int auxId , i , flag = 0;
+    char respuesta;
+    mostrarTodos( empleado , cantidad );
+
+    printf("Ingrese id: ");
+    scanf( "%d" , &auxId );
+
+    for( i = 0 ; i < cantidad ; i++ ) {
+        if( auxId == empleado[i].id ) {
+            mostrarUno( empleado[i] );
+            do {
+                printf("¿ Esta seguro que desea darlo de baja ? s/n");
+                scanf( "%c" , &respuesta );
+            } while (respuesta != 's' && respuesta != 'n');
+            if(respuesta == 's') {
+                empleado[i].isEmpty = 1;
+                flag = 1;
+                break;
+            } else {
+                printf("El registro no se dio de baja");
+            }
+        }
+    }
+
+    if( flag == 0 ) {
+        printf("El dato no existe");
+    }
+};
+
+int buscar( eEmpleado empleado[] , int cantidad , int id ) {
+ int i;
+ int idEmpleado = 0;
+
+ for ( i = 0 ; i < cantidad ; i++ ) {
+   if ( empleado[i].id == id ) {
+     idEmpleado = empleado[i].id;
+   };
+ };
+ return idEmpleado;
+};
+
 void mostrarUno( eEmpleado empleado ){
-        printf("%s\t%s\t%d\t%d\t%d\t%d\n", empleado.apellido, empleado.nombre, empleado.isEmpty , empleado.fechaIngreso.dia , empleado.fechaIngreso.mes , empleado.fechaIngreso.anio );
+        printf("%d\t%s\t%s\t%d\t%d\t%d\t%d\n", empleado.id , empleado.apellido, empleado.nombre, empleado.isEmpty , empleado.fechaIngreso.dia , empleado.fechaIngreso.mes , empleado.fechaIngreso.anio );
 }
 
 void mostrarTodos( eEmpleado empleado[], int cantidad ){
