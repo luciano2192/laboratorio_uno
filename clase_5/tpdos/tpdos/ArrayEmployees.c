@@ -5,6 +5,7 @@
 #include "input.h"
 #include "ArrayEmployees.h"
 
+#define LEN 51
 
 int initEmployees( eEmpleado* list , int len ) {
     int respuesta = -1;
@@ -38,15 +39,15 @@ int findEmployeeById( eEmpleado* list , int len , int id ) {
 
 
 int printEmployees( eEmpleado* list , int length ) {
- int i;
-  printf( "ID\tNOMBRE\tAPELLIDO\tSALARIO\tSECTOR\n" );
- for ( i = 0 ; i < length ; i++ ) {
-   if( list[i].isEmpty == 1 ) {
-     printf( "%d\t%s\t%s\t%2.f\t%d\n" , list[i].id , list[i].name , list[i].lastName , list[i].salary , list[i].sector);
-   }
- };
-
- return 0;
+  int i;
+  printf( "\nLISTADO DE EMPLEADOS\n" );
+  printf( "\nID\tAPELLIDO\tNOMBRE\tSALARIO\tSECTOR\n" );
+  for ( i = 0 ; i < length ; i++ ) {
+    if( list[i].isEmpty == 0 ) {
+      printf( "%d\t%s\t%s\t%2.f\t%d\n" , list[i].id , list[i].lastName , list[i].name , list[i].salary , list[i].sector);
+    }
+  };
+  return 0;
 };
 
 
@@ -106,18 +107,25 @@ indicate UP or DOWN order
 *
 */
 int sortEmployees( eEmpleado* list , int len ) {
- int i , j;
- eEmpleado aux;
+  int i , j;
+  eEmpleado aux;
+ 
+  for( i = 0 ; i < len-1 ; i++ ) {
+    for( j = i + 1 ; i < len ; j++ ) {
+      if ( list[i].sector > list[j].sector )  {
+        aux = list[i];
+        list[i] = list[j];
+        list[j] = aux;
+      } else {
+          if( list[i].sector == list[j].sector && strcmp( list[i].lastName , list[j].lastName ) > 0 ) {
+            aux = list[i];
+            list[i] = list[j];
+            list[j] = aux;
+          }
+      }
+    }
+  };
 
- for( i = 0 ; i < len-1 ; i++ ) {
-   for( j = i + 1 ; i < len ; j++ ) {
-     if ( list[i].id < list[j].id ) {
-       aux = list[i];
-       list[i] = list[j];
-       list[j] = aux;
-     };
-   };
- };
   return 0;
 }
 
@@ -213,43 +221,57 @@ int menuModificacion() {
     return menu;
 };
 
-int modifyEmployee( eEmpleado* list , int len ) {
 
-    int auxId , id , menuMod , respuesta = -1;
+int modifyEmployee( eEmpleado* list , int len , int id ) {
+
+    int auxId , auxSector , menuMod , respuesta = -1;
     char verificar;
-
-    printf("Ingrese el id del empleado: ");
-    scanf( "%d" , auxId );
+    float auxSalario;
+    char auxNombre[LEN] , auxApellido[LEN];
 
     id = findEmployeeById( list , len , id );
 
     if( id != -1 ) {
-        printf("¿ Que desea modificar ?");
+        printf("Â¿ Que desea modificar ?");
         menuMod = menuModificacion();
 
         switch( menuMod ) {
             case 1:
+              verificar = verificaSioNo("Esta seguro ? s/n", "Ingrese S o N.");
+              if( verificar == 'S') {
                 getString( auxNombre , "Ingrese el nombre: " , "ERROR ! Ingrese nuevamente el nombre: " , LEN );
+                strcpy( list[id].name , auxNombre );
+              }
+              respuesta = 0;
             break;
             case 2:
+              verificar = verificaSioNo("Esta seguro ? s/n", "Ingrese S o N.");
+              if( verificar == 'S') {
+                getString( auxApellido , "Ingrese el apellido: " , "ERROR ! Ingrese nuevamente el apellido: " , LEN );
+                strcpy( list[id].lastName , auxApellido );
+              }
+              respuesta = 0;
             break;
             case 3:
+            verificar = verificaSioNo("Esta seguro ? s/n", "Ingrese S o N.");
+              if( verificar == 'S') {
+                getFloat( &auxSalario , "Ingrese el salario: " , "ERROR ! Ingrese nuevamente el salario: " , 1 , 1000 );
+                list[id].salary = auxSalario;
+              }
+              respuesta = 0;
             break;
             case 4:
+              verificar = verificaSioNo("Esta seguro ? s/n", "Ingrese S o N.");
+              if( verificar == 'S') {
+                 getInt( &auxSector , "Ingrese el sector: " , "ERROR ! Ingrese nuevamente el sector: " , 1 , 3 );
+                list[id].sector = auxSector;
+              }
+              respuesta = 0;
             break;
             case 5:
-                break;
+              respuesta = 0;
+            break;
         }
-
-        verificar = verificaSioNo("Esta seguro ? s/n", "Ingrese S o N.");
-        if( verificar == 'S') {
-            list[i].isEmpty = 0;
-            respuesta = 0;
-            printf("Dato eliminado con exito.");
-        }
-    } else {
-        printf("Dato inexistente.");
     }
-
- return respuesta;
-};
+  return respuesta;
+}
