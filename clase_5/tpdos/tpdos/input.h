@@ -1,7 +1,3 @@
-typedef struct{
-    int dia,mes,anio;
-} eFecha;
-
 void miFgets(char nombre[], int cantidad);
 
 int menuABM();
