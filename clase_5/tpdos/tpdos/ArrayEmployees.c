@@ -269,7 +269,7 @@ int modifyEmployee( eEmpleado* list , int len , int id ) {
 
 int promedioSalarios( eEmpleado* list , int len ) {
 
-  int i , cantidadEmpleados = 0 , superanPromedio = 0;
+  int i , cantidadEmpleados = 0 , superanPromedio = 0, respuesta = -1;
   float suma = 0, promedio;
 
   for( i = 0 ; i < len ; i++ ) {
@@ -290,9 +290,13 @@ int promedioSalarios( eEmpleado* list , int len ) {
     }
   }
 
+  if( suma > 0 && promedio > 0 ) {
+    respuesta = 0;
+  }
+
   printf( "\nTOTAL\tPROMEDIO\n" );
   printf( "\n%.2f\t%.2f\n" , suma , promedio );
   printf( "Superan el promedio: %d" , superanPromedio );
 
-  return 0;
+  return respuesta;
 }
