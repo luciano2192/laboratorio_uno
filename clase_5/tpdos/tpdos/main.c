@@ -39,6 +39,7 @@ int main() {
             case 4:
                 sortEmployees( empleados , CANT );
                 printEmployees( empleados , CANT );
+                promedioSalarios( empleados , CANT );
                 break;
             case 5:
                 break;
