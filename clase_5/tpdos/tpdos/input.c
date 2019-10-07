@@ -18,8 +18,8 @@ int menuABM() {
     int menu;
 
     printf("\n1) Alta. ");
-    printf("\n2) Baja. ");
-    printf("\n3) Modificacion. ");
+    printf("\n2) Modificacion. ");
+    printf("\n3) Baja. ");
     printf("\n4) Imprimir todos. ");
     printf("\n5) Salir.");
     printf("\nSeleccionar una opcion <1-5>: ");
@@ -67,7 +67,7 @@ float toFloat( char cadena[] ) {
 };
 
 /**
-* \brief Solicita un número al usuario y lo valida
+* \brief Solicita un nÃºmero al usuario y lo valida
 * \param input Se carga el numero ingresado
 * \param message Es el mensaje a ser mostrado
 * \param eMessage Es el mensaje a ser mostrado en caso de error
@@ -186,4 +186,3 @@ int getChar( char* input , char msj[] , char errorMsj[] ) {
     return respuesta;
 
 }
-
