@@ -99,3 +99,5 @@ int estaVacio( eEmpleado* list , int length );
 int menuModificacion();
 
 int modifyEmployee( eEmpleado* list , int len , int id );
+
+int promedioSalarios( eEmpleado* list , int len );
