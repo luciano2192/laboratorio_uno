@@ -9,12 +9,12 @@
 
 int main() {
 
-    int opcionMenu , auxSector;
+    int opcionMenu , auxSector , auxId;
     float auxSalario;
     char auxNombre[LEN] , auxApellido[LEN];
 
     eEmpleado empleados[CANT];
-
+    
     initEmployees( empleados , CANT );
 
     do {
@@ -29,10 +29,16 @@ int main() {
                 addEmployee( empleados , CANT , auxNombre , auxApellido , auxSalario , auxSector );
                 break;
             case 2:
-
+                getInt( &auxId , "Ingrese el id: " , "ERROR ! Ingrese nuevamente el id: " , 0 , CANT );
+                modifyEmployee( empleados , CANT , auxId );
+                break;
+            case 3:
+                getInt( &auxId , "Ingrese el id: " , "ERROR ! Ingrese nuevamente el id: " , 0 , CANT );
+                removeEmployee( empleados , CANT , auxId );
                 break;
             case 4:
-
+                sortEmployees( empleados , CANT );
+                printEmployees( empleados , CANT );
                 break;
             case 5:
                 break;
