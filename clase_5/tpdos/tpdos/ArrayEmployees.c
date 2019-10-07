@@ -275,3 +275,33 @@ int modifyEmployee( eEmpleado* list , int len , int id ) {
     }
   return respuesta;
 }
+
+int promedioSalarios( eEmpleado* list , int len ) {
+
+  int i , cantidadEmpleados = 0 , superanPromedio = 0;
+  float suma = 0, promedio;
+
+  for( i = 0 ; i < len ; i++ ) {
+
+    suma += list[i].salary;
+    
+    if( list[i].isEmpty == 1 ) {
+      cantidadEmpleados++;
+    }
+  }
+
+  promedio = suma / cantidadEmpleados;
+  
+  for( i = 0 ; i < len ; i++ ) {
+
+    if( list[i].salary > promedio ) {
+      superanPromedio++;
+    }
+  }
+
+  printf( "\nTOTAL\tPROMEDIO\n" );
+  printf( "\n%.2f\t%.2f\n" , suma , promedio );
+  printf( "Superan el promedio: %d" , superanPromedio );
+
+  return 0;
+}
