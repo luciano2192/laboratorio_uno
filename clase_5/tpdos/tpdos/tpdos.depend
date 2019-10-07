@@ -13,3 +13,40 @@
 	<ctype.h>
 	"tpdos.h"
 
+1570408199 source:c:\users\lucho\desktop\laboratorio_uno\clase_5\tpdos\tpdos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"input.h"
+	"ArrayEmployees.h"
+
+1570403061 c:\users\lucho\desktop\laboratorio_uno\clase_5\tpdos\tpdos\tpdos.h
+
+1570403104 source:c:\users\lucho\desktop\laboratorio_uno\clase_5\tpdos\tpdos\tpdos.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"tpdos.h"
+	"ArrayEmployees.h"
+
+1570410927 source:c:\users\lucho\desktop\laboratorio_uno\clase_5\tpdos\tpdos\arrayemployees.c
+	<stdio.h>
+	<ctype.h>
+	<string.h>
+	<stdlib.h>
+	"input.h"
+	"ArrayEmployees.h"
+
+1570410976 c:\users\lucho\desktop\laboratorio_uno\clase_5\tpdos\tpdos\arrayemployees.h
+
+1570406807 c:\users\lucho\desktop\laboratorio_uno\clase_5\tpdos\tpdos\input.h
+
+1570411117 source:c:\users\lucho\desktop\laboratorio_uno\clase_5\tpdos\tpdos\input.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"input.h"
+	"ArrayEmployees.h"
+

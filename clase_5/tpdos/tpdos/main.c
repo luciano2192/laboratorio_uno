@@ -1,29 +1,38 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "tpdos.h"
+#include "input.h"
+#include "ArrayEmployees.h"
 
-#define CANT 4
+#define LEN 51
+#define CANT 2
 
-int main()
-{
-    eEmpleado empleado[CANT];
+int main() {
 
-    inicializar( empleado , CANT );
+    int opcionMenu , auxSector;
+    float auxSalario;
+    char auxNombre[LEN] , auxApellido[LEN];
 
-    int opcionMenu;
+    eEmpleado empleados[CANT];
+
+    initEmployees( empleados , CANT );
+
     do {
         opcionMenu = menuABM();
 
         switch( opcionMenu ) {
             case 1:
-                alta( empleado , CANT );
+                getString( auxNombre , "Ingrese el nombre: " , "ERROR ! Ingrese nuevamente el nombre: " , LEN );
+                getString( auxApellido , "Ingrese el apellido: " , "ERROR ! Ingrese nuevamente el apellido: " , LEN );
+                getFloat( &auxSalario , "Ingrese el salario: " , "ERROR ! Ingrese nuevamente el salario: " , 1 , 1000 );
+                getInt( &auxSector , "Ingrese el sector: " , "ERROR ! Ingrese nuevamente el sector: " , 1 , 3 );
+                addEmployee( empleados , CANT , auxNombre , auxApellido , auxSalario , auxSector );
                 break;
             case 2:
-                baja( empleado , CANT );
+
                 break;
             case 4:
-                mostrarTodos( empleado , CANT );
+
                 break;
             case 5:
                 break;
