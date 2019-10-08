@@ -60,3 +60,4 @@ int ordenarJuegos( eJuego* list , int len );
 
 int printJuegos( eJuego* list , int len );
 
+char pedirSexo( char* input , char msj[] , char errorMsj[] );
