@@ -145,21 +145,25 @@ int getChar( char* input , char msj[] , char errorMsj[] ) {
 
     if( input != NULL && msj != NULL && errorMsj != NULL ) {
        do {
+
         printf( "%s" , msj );
         scanf( "%c" , &aux );
-        if( isalpha( aux ) == 1 ) {
-            *input = aux;
+
+        if( isalpha( aux ) != 0 ) {
+            *input = toupper(aux);
             respuesta = 0;
             fflush(stdin);
             break;
         } else {
           printf( "%s" , errorMsj );
+          *input = toupper(aux);
+          respuesta = 0;
         }
+
       } while( respuesta == -1 );
     }
     return respuesta;
 }
-
 int pedirTelefono( char* input , char msj[] , char errorMsj[] , int limit ) {
 
     int respuesta = -1;
