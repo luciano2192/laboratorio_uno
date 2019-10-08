@@ -295,3 +295,16 @@ int printJuegos( eJuego* list , int len ) {
   return 0;
 };
 
+char pedirSexo( char* input , char msj[] , char errorMsj[] ) {
+  char auxLetra;
+
+  while( auxLetra != 'F' && auxLetra != 'M' ) {
+    getChar( &auxLetra , msj , errorMsj );
+  }
+
+  if( auxLetra == 'F' || auxLetra == 'M' ) {
+    *input = auxLetra; 
+  }
+
+  return auxLetra;
+};
