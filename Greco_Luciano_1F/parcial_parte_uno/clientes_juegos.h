@@ -37,8 +37,8 @@ int hayLugar( eCliente* list , int length );
 
 void formatear( char* text );
 
-int altaCliente( eCliente* list , int len , char apellido[] , char
-nombre[] , char sexo , char domicilio[] , int tel );
+int altaCliente( eCliente list[] , int len , char apellido[] , char
+nombre[] , char sexo , char domicilio[] , char telefono[] );
 
 int estaVacio( eCliente* list , int length );
 

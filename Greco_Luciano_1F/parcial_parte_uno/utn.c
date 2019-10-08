@@ -160,18 +160,17 @@ int getChar( char* input , char msj[] , char errorMsj[] ) {
     return respuesta;
 }
 
-int pedirTelefono( int* input , char msj[] , char errorMsj[] , int limit ) {
+int pedirTelefono( char* input , char msj[] , char errorMsj[] , int limit ) {
 
-    int respuesta = -1 , auxTel;
-    char aux[limit];
+    int respuesta = -1;
+    char aux[200];
 
     if( input != NULL && msj != NULL && errorMsj != NULL && limit > 0 ) {
        do {
         printf( "%s" , msj );
-        miFgets( aux , limit );
+        miFgets( aux , 200 );
         if( sonLetras( aux ) != 1 && strlen( aux ) <= limit ) {
-            auxTel = toInt(aux);
-            strcpy( *input , auxTel );
+            strcpy( input , aux );
             respuesta = 0;
             fflush(stdin);
             break;

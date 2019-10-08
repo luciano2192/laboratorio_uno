@@ -16,4 +16,4 @@ int getString( char* input , char msj[] , char errorMsj[] , int limit );
 
 int getChar( char* input , char msj[] , char errorMsj[] );
 
-int pedirTelefono( int* input , char msj[] , char errorMsj[] , int limit );
+int pedirTelefono( char* input , char msj[] , char errorMsj[] , int limit );

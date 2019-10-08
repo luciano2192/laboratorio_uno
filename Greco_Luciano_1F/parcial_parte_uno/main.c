@@ -13,8 +13,8 @@ eJuego juegos[4] = {
 
 int main()
 {
-    int opcionMenu , auxId , auxTelefono;
-    char auxNombre[31] , auxApellido[31] , auxSexo , auxDomicilio[51];
+    int opcionMenu , auxId;
+    char auxNombre[31] , auxApellido[31] , auxSexo , auxDomicilio[51] ,  auxTelefono[21];
 
     eCliente clientes[5];
 
@@ -30,7 +30,7 @@ int main()
                 getString( auxNombre , "Ingrese el nombre: " , "ERROR ! Ingrese nuevamente el nombre: " , 31 );
                 getChar( &auxSexo , "Ingrese el sexo <F | M>: " , "ERROR ! Ingrese nuevamente el sexo: " );
                 getString( auxDomicilio , "Ingrese el domicilio: " , "ERROR ! Ingrese nuevamente el domicilio: " , 51 );
-                pedirTelefono( &auxTelefono , "Ingrese el telefono: " , "ERROR ! Ingrese nuevamente el telefono: " , 21 );
+                pedirTelefono( auxTelefono , "Ingrese el telefono: " , "ERROR ! Ingrese nuevamente el telefono: " , 21 );
                 altaCliente( clientes , 5 , auxApellido , auxNombre , auxSexo , auxDomicilio , auxTelefono );
                 break;
             case 2:

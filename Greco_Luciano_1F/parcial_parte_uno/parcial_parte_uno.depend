@@ -1,23 +1,23 @@
 # depslib dependency file v1.0
-1570492890 source:d:\greco_luciano_1f\parcial_parte_uno\main.c
+1570494069 source:d:\greco_luciano_1f\parcial_parte_uno\main.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	"utn.h"
 	"clientes_juegos.h"
 
-1570493139 d:\greco_luciano_1f\parcial_parte_uno\utn.h
+1570493837 d:\greco_luciano_1f\parcial_parte_uno\utn.h
 
-1570492283 d:\greco_luciano_1f\parcial_parte_uno\clientes_juegos.h
+1570493701 d:\greco_luciano_1f\parcial_parte_uno\clientes_juegos.h
 
-1570493130 source:d:\greco_luciano_1f\parcial_parte_uno\utn.c
+1570493812 source:d:\greco_luciano_1f\parcial_parte_uno\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	<string.h>
 	"clientes_juegos.h"
 
-1570492994 source:d:\greco_luciano_1f\parcial_parte_uno\clientes_juegos.c
+1570493974 source:d:\greco_luciano_1f\parcial_parte_uno\clientes_juegos.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>

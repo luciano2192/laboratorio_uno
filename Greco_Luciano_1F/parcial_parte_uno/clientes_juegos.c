@@ -22,13 +22,13 @@ int menuABM() {
 int menuModificacion() {
     int menu;
 
-    printf("\nA) Apellido. ");
-    printf("\nB) Nombre. ");
-    printf("\nC) Sexo. ");
-    printf("\nD) Domicilio.");
-    printf("\nE) Telefono.");
-    printf("\nF) Salir.");
-    printf("\nSeleccionar una opcion <1-5>: ");
+    printf("\n1) Apellido. ");
+    printf("\n2) Nombre. ");
+    printf("\n3) Sexo. ");
+    printf("\n4) Domicilio.");
+    printf("\n5) Telefono.");
+    printf("\n6) Salir.");
+    printf("\nSeleccionar una opcion <1-6>: ");
     scanf( "%d" , &menu );
 
     return menu;
@@ -108,7 +108,7 @@ void formatear( char* text ) {
 };
 
 int altaCliente( eCliente list[] , int len , char apellido[] , char
-nombre[] , char sexo , char domicilio[] , int tel ) {
+nombre[] , char sexo , char domicilio[] , char telefono[] ) {
     int i , respuesta = -1;
 
     i = hayLugar( list , len );
@@ -122,7 +122,7 @@ nombre[] , char sexo , char domicilio[] , int tel ) {
         strcpy( list[i].nombre , nombre );
         list[i].sexo = sexo;
         strcpy( list[i].domicilio , domicilio );
-        *list[i].telefono = tel;
+        strcpy( list[i].telefono , telefono );
         list[i].isEmpty = 1;
         printf("Ingreso exitoso !");
         respuesta = 0;
@@ -150,8 +150,8 @@ int buscarCod( eCliente* list , int len , int codigo ) {
 
 int modificarCliente( eCliente* list , int len , int codigo ) {
 
-    int cod , respuesta = -1 , auxTel;
-    char verificar , menuMod , auxSexo;
+    int cod , respuesta = -1 , auxTel , menuMod;
+    char verificar , auxSexo;
     char auxNombre[31] , auxApellido[31] , auxDomicilio[51] , auxTelefono[21];
 
     cod = buscarCod( list , len , codigo );
@@ -159,10 +159,9 @@ int modificarCliente( eCliente* list , int len , int codigo ) {
     if( cod != -1 ) {
         printf("¿ Que desea modificar ?");
         menuMod = menuModificacion();
-        menuMod = toupper(menuMod);
 
         switch( menuMod ) {
-            case 'A':
+            case 1:
               verificar = verificaSioNo("Esta seguro ? s/n", "Ingrese S o N.");
               if( verificar == 'S') {
                 getString( auxApellido , "Ingrese el apellido: " , "ERROR ! Ingrese nuevamente el apellido: " , 31 );
@@ -170,7 +169,7 @@ int modificarCliente( eCliente* list , int len , int codigo ) {
               }
               respuesta = 0;
             break;
-            case 'B':
+            case 2:
               verificar = verificaSioNo("Esta seguro ? s/n", "Ingrese S o N.");
               if( verificar == 'S') {
                 getString( auxNombre , "Ingrese el nombre: " , "ERROR ! Ingrese nuevamente el nombre: " , 31 );
@@ -178,7 +177,7 @@ int modificarCliente( eCliente* list , int len , int codigo ) {
               }
               respuesta = 0;
             break;
-            case 'C':
+            case 3:
             verificar = verificaSioNo("Esta seguro ? s/n", "Ingrese S o N.");
               if( verificar == 'S') {
                 getChar( &auxSexo , "Ingrese el sexo <F | M>: " , "ERROR ! Ingrese nuevamente el sexo: " );
@@ -186,7 +185,7 @@ int modificarCliente( eCliente* list , int len , int codigo ) {
               }
               respuesta = 0;
             break;
-            case 'D':
+            case 4:
               verificar = verificaSioNo("Esta seguro ? s/n", "Ingrese S o N.");
               if( verificar == 'S') {
                 getString( auxDomicilio , "Ingrese el domicilio: " , "ERROR ! Ingrese nuevamente el domicilio: " , 51 );
@@ -194,7 +193,7 @@ int modificarCliente( eCliente* list , int len , int codigo ) {
               }
               respuesta = 0;
             break;
-            case 'E':
+            case 5:
               verificar = verificaSioNo("Esta seguro ? s/n", "Ingrese S o N.");
               if( verificar == 'S') {
                 getString( auxTelefono , "Ingrese el telefono: " , "ERROR ! Ingrese nuevamente el telefono: " , 21 );
@@ -203,7 +202,7 @@ int modificarCliente( eCliente* list , int len , int codigo ) {
               }
               respuesta = 0;
             break;
-            case 'F':
+            case 6:
               respuesta = 0;
             break;
         }
@@ -261,7 +260,7 @@ int printClientes( eCliente* list , int len ) {
   printf( "\nID\tAPELLIDO\tNOMBRE\n" );
   for ( i = 0 ; i < len ; i++ ) {
 
-    printf( "%d\t%s\t%s\n" , list[i].codigo , list[i].apellido , list[i].nombre );
+    printf( "\n%d\t%s\t%s\n" , list[i].codigo , list[i].apellido , list[i].nombre );
 
   };
   return 0;
