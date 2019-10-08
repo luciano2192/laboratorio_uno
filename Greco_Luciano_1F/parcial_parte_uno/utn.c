@@ -118,22 +118,23 @@ int sonLetras( char letras[] ) {
 int getString( char* input , char msj[] , char errorMsj[] , int limit ) {
 
     int respuesta = -1;
-    char aux[200];
+    char aux[limit];
+    
+      if( input != NULL && msj != NULL && errorMsj != NULL && limit > 0 ) {
+        do {
+          printf( "%s" , msj );
+          miFgets( aux , limit );
 
-    if( input != NULL && msj != NULL && errorMsj != NULL && limit > 0 ) {
-       do {
-        printf( "%s" , msj );
-        miFgets( aux , 200 );
-        if( sonLetras( aux ) == 1 && strlen( aux ) <= limit ) {
+          if( sonLetras( aux ) == 1 && strlen( aux ) <= limit ) {
             strcpy( input , aux );
             respuesta = 0;
-            fflush(stdin);
             break;
-        } else {
-          printf( "%s" , errorMsj );
-        }
-      } while( respuesta == -1 );
-    }
+          } else {
+            printf( "%s" , errorMsj );
+          }
+        } while( strcmp( input , "" ) == 0 );
+      }
+    
     return respuesta;
 
 }
