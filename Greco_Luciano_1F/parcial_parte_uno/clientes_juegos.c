@@ -157,7 +157,7 @@ int modificarCliente( eCliente* list , int len , int codigo ) {
     cod = buscarCod( list , len , codigo );
 
     if( cod != -1 ) {
-        printf("¿ Que desea modificar ?");
+        printf("Â¿ Que desea modificar ?");
         menuMod = menuModificacion();
 
         switch( menuMod ) {
@@ -236,7 +236,7 @@ int ordenarClientes( eCliente* list , int len ) {
   eCliente aux;
 
   for( i = 0 ; i < len-1 ; i++ ) {
-    for( j = i + 1 ; i < len ; j++ ) {
+    for( j = i + 1 ; j < len ; j++ ) {
       if ( strcmp( list[i].apellido , list[j].apellido ) > 0 )  {
         aux = list[i];
         list[i] = list[j];
@@ -270,8 +270,8 @@ int ordenarJuegos( eJuego* list , int len ) {
   int i , j;
   eJuego aux;
 
-  for( i = 0 ; i < len ; i++ ) {
-    for( j = i + 1 ; i < len-1 ; j++ ) {
+  for( i = 0 ; i < len-1 ; i++ ) {
+    for( j = i + 1 ; j < len ; j++ ) {
       if ( strcmp( list[i].descripcion , list[j].descripcion ) > 0 )  {
         aux = list[i];
         list[i] = list[j];
