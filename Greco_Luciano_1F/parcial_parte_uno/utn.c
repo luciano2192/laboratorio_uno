@@ -132,11 +132,10 @@ int getString( char* input , char msj[] , char errorMsj[] , int limit ) {
           } else {
             printf( "%s" , errorMsj );
           }
-        } while( strcmp( input , "" ) == 0 );
+        } while( respuesta == -1 );
       }
     
     return respuesta;
-
 }
 
 int getChar( char* input , char msj[] , char errorMsj[] ) {
