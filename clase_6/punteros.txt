@@ -1,0 +1,37 @@
+PUNTEROS
+
+	pueden ser de cualquier tipo
+		
+		int , float , char, double , void
+
+	tambien puede ser del tipo STRUCT (estructura)
+
+	- como lo declaro ?
+
+		tipo_dato* nombre
+
+		EJ: int *Pnumero
+
+	Veámoslo otro ejemplo:
+	
+	int* a;
+	int b , c ;
+
+	Y hacemos:
+	
+	b=15; // Asignamos el valor 15 a la variable 'b'
+	a=&b; // Obtenemos la posición de memoria de 'b' con el operador '&'
+	c=*a; // Copiamos el contenido apuntado por el puntero 'a'
+
+	Entonces la variable 'c' contendrá el valor 15, pues '*a' 
+	devuelve el contenido (o valor) de la dirección a la que 
+	“apunta” la variable puntero, y con anterioridad hemos hecho 
+	que 'a' contenga la dirección de memoria de la variable 'b' 
+	usando para ello el operador '&'.
+
+	- como compararlos ?
+
+	lo puedo comparar con NULL, con un puntero
+
+
+	sizeof(  ) 
