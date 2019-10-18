@@ -13,12 +13,12 @@ eJuego juegos[4] = {
 
 int main()
 {
-    int opcionMenu , auxId;
+    int opcionMenu;
     char auxNombre[31] , auxApellido[31] , auxSexo , auxDomicilio[51] ,  auxTelefono[21];
 
-    eCliente clientes[5];
+    eCliente clientes[2];
 
-    initClientes( clientes , 5 );
+    initClientes( clientes , 2 );
 
     do {
 
@@ -26,24 +26,27 @@ int main()
 
         switch( opcionMenu ) {
             case 1:
-                getString( auxApellido , "Ingrese el apellido: " , "ERROR ! Ingrese nuevamente el apellido: " , 31 );
-                getString( auxNombre , "Ingrese el nombre: " , "ERROR ! Ingrese nuevamente el nombre: " , 31 );
-                getChar( &auxSexo , "Ingrese el sexo <F | M>: " , "ERROR ! Ingrese nuevamente el sexo: " );
-                getString( auxDomicilio , "Ingrese el domicilio: " , "ERROR ! Ingrese nuevamente el domicilio: " , 51 );
-                pedirTelefono( auxTelefono , "Ingrese el telefono: " , "ERROR ! Ingrese nuevamente el telefono: " , 21 );
-                altaCliente( clientes , 5 , auxApellido , auxNombre , auxSexo , auxDomicilio , auxTelefono );
+                getString( auxApellido , "Ingrese el apellido: " , "ERROR ! valor incorrecto" , 31 );
+                getString( auxNombre , "Ingrese el nombre: " , "ERROR ! valor incorrecto" , 31 );
+                auxSexo = pedirSexo( "Ingrese el sexo <F | M>: " , "ERROR ! valor incorrecto" );
+                getString( auxDomicilio , "Ingrese el domicilio: " , "ERROR ! valor incorrecto" , 51 );
+                pedirTelefono( auxTelefono , "Ingrese el telefono: " , "ERROR ! valor incorrecto" , 21 );
+                altaCliente( clientes , 2 , auxApellido , auxNombre , auxSexo , auxDomicilio , auxTelefono );
                 break;
             case 2:
+                /*
                 getInt( &auxId , "Ingrese el id: " , "ERROR ! Ingrese nuevamente el id: " , 0 , 5 );
-                modificarCliente( clientes , 5 , auxId );
+                modificarCliente( clientes , 2 , auxId );
+                */
                 break;
             case 3:
+                /*
                 getInt( &auxId , "Ingrese el id: " , "ERROR ! Ingrese nuevamente el id: " , 0 , 5 );
-                borrarCliente( clientes , 5 , auxId );
+                borrarCliente( clientes , 2 , auxId );*/
                 break;
             case 4:
                 //ordenarClientes( clientes , 5 );
-                printClientes( clientes , 5 );
+                printClientes( clientes , 2 );
                 break;
             case 5:
                 break;

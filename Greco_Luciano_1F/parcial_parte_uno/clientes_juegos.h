@@ -35,9 +35,9 @@ char verificaSioNo( char* msj , char* msjError );
 
 int hayLugar( eCliente* list , int length );
 
-void formatear( char* text );
+void formatear( char text[] );
 
-int altaCliente( eCliente list[] , int len , char apellido[] , char
+void altaCliente( eCliente list[] , int len , char apellido[] , char
 nombre[] , char sexo , char domicilio[] , char telefono[] );
 
 int estaVacio( eCliente* list , int length );
@@ -60,4 +60,4 @@ int ordenarJuegos( eJuego* list , int len );
 
 int printJuegos( eJuego* list , int len );
 
-char pedirSexo( char* input , char msj[] , char errorMsj[] );
+char pedirSexo( char msj[] , char errorMsj[] );

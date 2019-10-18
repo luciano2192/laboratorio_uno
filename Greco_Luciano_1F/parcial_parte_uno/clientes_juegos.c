@@ -83,11 +83,11 @@ char verificaSioNo( char* msj , char* msjError ) {
  return letra;
 };
 
-int hayLugar( eCliente* list , int length ) {
+int hayLugar( eCliente *list , int length ) {
  int i , respuesta = -1;
 
  for ( i = 0 ; i < length ; i++ ) {
-   if( list[i].isEmpty == 1 ) {
+   if( list[i].isEmpty != 0 ) {
      respuesta = i;
      break;
    }
@@ -96,41 +96,39 @@ int hayLugar( eCliente* list , int length ) {
  return respuesta;
 };
 
-void formatear( char* text ) {
- int i;
+void formatear( char text[] ) {
+  int i , len = strlen(text);
 
- text[0] = toupper(text[0]);
+  text[0] = toupper(text[0]);
 
- while( text[i] != '\0' ) {
-   text[i+1] = tolower(text[i+1]);
-   i++;
- };
+  for( i = 1 ; i < len ; i++ ) {
+    text[i] = tolower(text[i]);
+  }
 };
 
-int altaCliente( eCliente list[] , int len , char apellido[] , char
+void altaCliente( eCliente list[] , int len , char apellido[] , char
 nombre[] , char sexo , char domicilio[] , char telefono[] ) {
-    int i , respuesta = -1;
+    int i ;
 
-    i = hayLugar( list , len );
-
-    if( i != -1 ) {
-        list[i].codigo = aumentar( list , len );
-        formatear( apellido );
-        formatear( nombre );
-        formatear( domicilio );
-        strcpy( list[i].apellido , apellido );
-        strcpy( list[i].nombre , nombre );
-        list[i].sexo = sexo;
-        strcpy( list[i].domicilio , domicilio );
-        strcpy( list[i].telefono , telefono );
-        list[i].isEmpty = 1;
-        printf("Ingreso exitoso !");
-        respuesta = 0;
-    } else {
-        printf("No hay lugar disponible.");
+    for( i = 0 ; i < len ; i++ ) {
+        if( list[i].isEmpty == 1 ) {
+            printf("Ingreso i=%d" , i);
+            list[i].codigo = aumentar( list , len );
+            formatear(apellido);
+            formatear(nombre);
+            formatear(domicilio);
+            strcpy( list[i].apellido , apellido );
+            strcpy( list[i].nombre , nombre );
+            list[i].sexo = sexo;
+            strcpy( list[i].domicilio , domicilio );
+            strcpy( list[i].telefono , telefono );
+            list[i].isEmpty = 0;
+            printf("Ingreso exitoso !");
+            break;
+        } else {
+            printf("No hay lugar disponible.");
+        }
     }
-
-    return respuesta;
 };
 
 int buscarCod( eCliente* list , int len , int codigo ) {
@@ -148,6 +146,7 @@ int buscarCod( eCliente* list , int len , int codigo ) {
  return codCliente;
 };
 
+/*
 int modificarCliente( eCliente* list , int len , int codigo ) {
 
     int cod , respuesta = -1 , auxTel , menuMod;
@@ -209,6 +208,7 @@ int modificarCliente( eCliente* list , int len , int codigo ) {
     }
   return respuesta;
 }
+*/
 
 int borrarCliente( eCliente* list , int len , int codigo ) {
 
@@ -254,14 +254,18 @@ int ordenarClientes( eCliente* list , int len ) {
   return 0;
 }
 
-int printClientes( eCliente* list , int len ) {
+int printClientes( eCliente *list , int len ) {
   int i;
   printf( "\nLISTADO DE CLIENTES\n" );
-  printf( "\nID\tAPELLIDO\tNOMBRE\n" );
+  printf("CODIGO\tAPELLIDO\tNOMBRE\tSEXO\tDOMICILIO\tTELEFONO\n");
   for ( i = 0 ; i < len ; i++ ) {
-
-    printf( "\n%d\t%s\t%s\n" , list[i].codigo , list[i].apellido , list[i].nombre );
-
+    if( list[i].isEmpty == 0 ) {
+        printf("%d\t%s\t%s\t%c\t%s\t%s\n", list[i].codigo,
+                   list[i].apellido, list[i].nombre, list[i].sexo,
+                   list[i].domicilio, list[i].telefono);
+    } else {
+        break;
+    }
   };
   return 0;
 };
@@ -295,15 +299,12 @@ int printJuegos( eJuego* list , int len ) {
   return 0;
 };
 
-char pedirSexo( char* input , char msj[] , char errorMsj[] ) {
+
+char pedirSexo( char msj[] , char errorMsj[] ) {
   char auxLetra;
 
   while( auxLetra != 'F' && auxLetra != 'M' ) {
-    getChar( &auxLetra , msj , errorMsj );
-  }
-
-  if( auxLetra == 'F' || auxLetra == 'M' ) {
-    *input = auxLetra; 
+    auxLetra = getChar( msj , errorMsj );
   }
 
   return auxLetra;

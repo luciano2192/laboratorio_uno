@@ -4,6 +4,45 @@
 #include <string.h>
 #include "clientes_juegos.h"
 
+void pedirTelefono( char *input , char msj[] , char errorMsj[] , int limit ) {
+
+    int salida = 0;
+    char aux[limit];
+
+    do {
+      printf( "\n%s" , msj );
+      miFgets( aux , limit );
+
+      if( sonLetras(aux) == 1 && esNumero(aux) == 0 ) {
+        printf( "\n%s" , errorMsj );
+      } else {
+        strcpy( input , aux );
+        salida = 1;
+      }
+    } while( salida == 0 );
+}
+
+char getChar( char msj[] , char errorMsj[] ) {
+
+  int salida = 0;
+  char caracter;
+
+  do {
+    printf( "\n%s" , msj );
+    fflush(stdin);
+    scanf( " %c" , &caracter );
+    if( isalpha(caracter) == 0 ) {
+      printf("%s",errorMsj);
+    } else {
+      caracter = toupper(caracter);
+      salida = 1;
+    }
+  } while( salida == 0 );
+
+  return caracter;
+};
+
+
 void miFgets( char nombre[] , int cantidad ){
 
     fflush(stdin);
@@ -11,6 +50,81 @@ void miFgets( char nombre[] , int cantidad ){
 
     nombre[cantidad-1] = '\0';
 }
+
+int sonLetras( char letras[] ) {
+
+    int i , respuesta = 0;
+
+    for( i = 0 ; i < strlen(letras) ; i++ ) {
+        if( isalpha( letras[i] ) != 0 ) {
+            respuesta = 1;
+        }
+    }
+
+    return respuesta;
+}
+
+
+void getString( char *input , char msj[] , char errorMsj[] , int limit ) {
+
+    int salida = 0 , len = 0;
+    char aux[limit];
+
+    do {
+      printf( "\n%s" , msj );
+      miFgets( aux , limit );
+      len = strlen(aux);
+      if( (sonLetras(aux) == 1) && (len < limit) ) {
+        strcpy( input , aux );
+        salida = 1;
+      } else {
+        printf( "\n%s" , errorMsj );
+      }
+    } while( salida == 0 );
+}
+
+
+
+float toFloat( char cadena[] ) {
+
+ float cadenaFloat;
+
+ if( esNumero( cadena ) == 1 ) {
+   cadenaFloat = atof( cadena );
+ } else {
+   cadenaFloat = 0;
+ }
+
+ return cadenaFloat;
+};
+
+
+float getFloat( char msj[] , char errorMsj[] , float minLimit , float maxLimit ) {
+
+  float auxFloat;
+  int salida = 0;
+  char aux[strlen(msj)];
+
+  do {
+    printf( "\n%s" , msj );
+    scanf( "%s" , aux );
+    if( esNumero(aux) == 0 ) {
+      printf( "\n%s" , errorMsj );
+    } else {
+      auxFloat = toFloat(aux);
+      if( auxFloat >= minLimit && auxFloat <= maxLimit ) {
+        salida = 1;
+      } else {
+        printf( "\n%s" , errorMsj );
+      }
+    }
+  } while( salida == 0 );
+
+  return auxFloat;
+}
+
+
+
 
 int esNumero( char cadena[] ) {
 int i , respuesta;
@@ -37,152 +151,24 @@ int toInt( char cadena[] ) {
  return cadenaInt;
 };
 
-float toFloat( char cadena[] ) {
+int getInt( char msj[] , char errorMsj[] , int minLimit , int maxLimit ) {
+    int auxInt , salida = 0;
+    char aux[strlen(msj)];
 
- float cadenaFloat;
-
- if( esNumero( cadena ) == 1 ) {
-   cadenaFloat = atof( cadena );
- } else {
-   cadenaFloat = 0;
- }
-
- return cadenaFloat;
-};
-
-int getInt( int* input , char msj[] , char errorMsj[] , int minLimit , int maxLimit ) {
-    int auxInt , respuesta = -1;
-    char aux[51];
-
-    if( input != NULL && msj != NULL && errorMsj != NULL && minLimit < maxLimit ) {
-       do {
-        printf( "%s" , msj );
+    do {
+        printf( "\n%s" , msj );
         scanf( "%s" , aux );
-        if( esNumero( aux ) != 0 ) {
+        if( esNumero(aux) == 0 ) {
+          printf( "\n%s" , errorMsj );
+        } else {
           auxInt = toInt(aux);
           if( auxInt >= minLimit && auxInt <= maxLimit ) {
-            *input = auxInt;
-            respuesta = 0;
-            fflush(stdin);
-            break;
+            salida = 1;
           } else {
-            printf( "%s" , errorMsj );
+            printf( "\n%s" , errorMsj );
           }
-        } else {
-          printf( "%s" , errorMsj );
         }
-      } while( respuesta == -1 );
-    }
-    return respuesta;
+    } while( salida == 0 );
+
+    return auxInt;
 };
-
-
-int getFloat( float* input , char msj[] , char errorMsj[] , float minLimit , float maxLimit ) {
-    float auxFloat;
-    int respuesta = -1;
-    char aux[51];
-
-    if( input != NULL && msj != NULL && errorMsj != NULL && minLimit < maxLimit ) {
-       do {
-        printf( "%s" , msj );
-        scanf( "%s" , aux );
-        if( esNumero( aux ) != 0 ) {
-          auxFloat = toFloat( aux );
-          if( auxFloat >= minLimit && auxFloat <= maxLimit ) {
-            *input = auxFloat;
-            respuesta = 0;
-            fflush(stdin);
-            break;
-          }
-        } else {
-          printf( "%s" , errorMsj );
-        }
-      } while( respuesta == -1 );
-    }
-    return respuesta;
-};
-
-int sonLetras( char letras[] ) {
-
-    int i , respuesta = -1;
-
-    for( i = 0 ; i < strlen(letras) ; i++ ) {
-        if( isalpha( letras[i] ) != 0 ) {
-            respuesta = 1;
-        }
-    }
-
-    return respuesta;
-}
-
-int getString( char* input , char msj[] , char errorMsj[] , int limit ) {
-
-    int respuesta = -1;
-    char aux[limit];
-    
-      if( input != NULL && msj != NULL && errorMsj != NULL && limit > 0 ) {
-        do {
-          printf( "%s" , msj );
-          miFgets( aux , limit );
-
-          if( sonLetras( aux ) == 1 && strlen( aux ) <= limit ) {
-            strcpy( input , aux );
-            respuesta = 0;
-            break;
-          } else {
-            printf( "%s" , errorMsj );
-          }
-        } while( respuesta == -1 );
-      }
-    
-    return respuesta;
-}
-
-int getChar( char* input , char msj[] , char errorMsj[] ) {
-
-    int respuesta = -1;
-    char aux;
-
-    if( input != NULL && msj != NULL && errorMsj != NULL ) {
-       do {
-
-        printf( "%s" , msj );
-        scanf( "%c" , &aux );
-
-        if( isalpha( aux ) != 0 ) {
-            *input = toupper(aux);
-            respuesta = 0;
-            fflush(stdin);
-            break;
-        } else {
-          printf( "%s" , errorMsj );
-          *input = toupper(aux);
-          respuesta = 0;
-        }
-
-      } while( respuesta == -1 );
-    }
-    return respuesta;
-}
-int pedirTelefono( char* input , char msj[] , char errorMsj[] , int limit ) {
-
-    int respuesta = -1;
-    char aux[200];
-
-    if( input != NULL && msj != NULL && errorMsj != NULL && limit > 0 ) {
-       do {
-        printf( "%s" , msj );
-        miFgets( aux , 200 );
-        if( sonLetras( aux ) != 1 && strlen( aux ) <= limit ) {
-            strcpy( input , aux );
-            respuesta = 0;
-            fflush(stdin);
-            break;
-        } else {
-          printf( "%s" , errorMsj );
-        }
-      } while( respuesta == -1 );
-    }
-    return respuesta;
-
-}

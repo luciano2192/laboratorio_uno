@@ -25,3 +25,29 @@
 	"utn.h"
 	"clientes_juegos.h"
 
+1571370756 source:c:\users\lucho\desktop\laboratorio_uno\greco_luciano_1f\parcial_parte_uno\clientes_juegos.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"utn.h"
+	"clientes_juegos.h"
+
+1571367163 c:\users\lucho\desktop\laboratorio_uno\greco_luciano_1f\parcial_parte_uno\utn.h
+
+1571370714 c:\users\lucho\desktop\laboratorio_uno\greco_luciano_1f\parcial_parte_uno\clientes_juegos.h
+
+1571367976 source:c:\users\lucho\desktop\laboratorio_uno\greco_luciano_1f\parcial_parte_uno\main.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	"utn.h"
+	"clientes_juegos.h"
+
+1571367143 source:c:\users\lucho\desktop\laboratorio_uno\greco_luciano_1f\parcial_parte_uno\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"clientes_juegos.h"
+

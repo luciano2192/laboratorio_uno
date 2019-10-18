@@ -1,19 +1,10 @@
-void miFgets( char nombre[] , int cantidad );
-
+int getInt( char msj[] , char errorMsj[] , int minLimit , int maxLimit );
 int esNumero( char cadena[] );
-
 int toInt( char cadena[] );
-
 float toFloat( char cadena[] );
-
-int getInt( int* input , char msj[] , char errorMsj[] , int minLimit , int maxLimit );
-
-int getFloat( float* input , char msj[] , char errorMsj[] , float minLimit , float maxLimit );
-
+float getFloat( char msj[] , char errorMsj[] , float minLimit , float maxLimit );
+void miFgets( char nombre[] , int cantidad );
 int sonLetras( char letras[] );
-
-int getString( char* input , char msj[] , char errorMsj[] , int limit );
-
-int getChar( char* input , char msj[] , char errorMsj[] );
-
-int pedirTelefono( char* input , char msj[] , char errorMsj[] , int limit );
+void getString( char *input , char msj[] , char errorMsj[] , int limit );
+char getChar( char msj[] , char errorMsj[] );
+void pedirTelefono( char *input , char msj[] , char errorMsj[] , int limit );
