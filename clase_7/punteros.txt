@@ -1,0 +1,38 @@
+
+ PUNTEROS
+
+ 
+	punteros a estructura
+
+		para acceder uso la flecha
+
+		struct alumno { 
+			char nombre[20]; 
+			int nota; 
+		}; 
+
+		struct alumno auxiliarAlumno; 
+		struct* punteroAlumno; 
+		punteroAlumno = &auxiliarAlumno;
+		
+		punteroAlumno -> nombre
+		punteroAlumno -> nota
+
+		se le quiero cargar el dato le agrego el &
+		
+		&punteroAlumno -> nombre
+		&punteroAlumno -> nota
+
+		// se puede acceder tambien con notacion de puntero
+
+		(*punteroAlumno).nombre
+		(*punteroAlumno).nota
+
+		se le quiero cargar el dato le agrego el &
+
+		&(*punteroAlumno).nombre
+		&(*punteroAlumno).nota
+
+		[-------CONVIENE USAR LA FLECHA------]
+
+		
