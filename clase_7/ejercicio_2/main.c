@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define CANTIDAD 1
 
 typedef struct {
     char nombre[20];
@@ -12,7 +11,7 @@ typedef struct {
 int main()
 {
     int i;
-    eAlumno alu , *ptrAlu , alus[3] , *ptrAlus;
+    eAlumno alu[1] , *ptrAlu , alus[3] , *ptrAlus;
     ptrAlu = alu;
     ptrAlus = alus;
 
@@ -22,10 +21,8 @@ int main()
     printf("Ingrese su edad: ");
     scanf( "%d" , &alu->edad );
 
-    for(i=0;i<CANTIDAD;i++) {
-        printf("Nombre: %s" , alu->nombre);
-        printf(" Edad: %d\n" , alu->edad);
-    };
+    printf("Nombre: %s" , ptrAlu->nombre);
+    printf(" Edad: %d\n" , ptrAlu->edad);
 
     //------------------------------------------*
 
@@ -34,10 +31,8 @@ int main()
     printf("Ingrese edad: ");
     scanf( "%d" , &(*alu).edad );
 
-    for(i=0;i<CANTIDAD;i++) {
-        printf("Nombre: %s" , (*(alu+i)).nombre);
-        printf(" Edad: %d\n" , (*(alu+i)).edad);
-    };
+    printf("Nombre: %s" , (*(ptrAlu)).nombre);
+    printf(" Edad: %d\n" , (*(ptrAlu)).edad);
 
     //------------------------------------------*
 
