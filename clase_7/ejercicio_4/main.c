@@ -1,18 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
-struct persona {
+typedef struct {
     char nombre[50];
     int edad;
     long int dni;
-};
+} ePersona;
 
-int loadPerson(struct S_Person* pPerson);
+int loadPerson(struct S_Person *pPerson);
+void printPerson(struct S_Person *pPerson);
 
 int main()
 {
-    printf("Hello world!\n");
+
     return 0;
 }
 
@@ -24,7 +24,7 @@ int loadPerson(struct S_Person *pPerson) {
     printf("Ingrese su dni: ");
 
 
-    if( pPerson->nombre != NULL && pPerson->edad > 0 && pPerson->dni > 0 ) {
+    if( pPerson->nombre[0] != '\0' && pPerson->edad > 0 && pPerson->dni > 0 ) {
         scanf( "%s" , pPerson->nombre );
         scanf( "%d" , &pPerson->edad );
         scanf( "%ld" , &pPerson->dni );
@@ -34,3 +34,11 @@ int loadPerson(struct S_Person *pPerson) {
     return retorno;
 };
 
+void printPerson(struct S_Person* pPerson) {
+
+    if(loadPerson(struct S_Person* pPerson)==1) {
+        printf("%s\n",pPerson->nombre);
+        printf("%d\n",pPerson->edad);
+        printf("%ld",pPerson->dni);
+    }
+};
