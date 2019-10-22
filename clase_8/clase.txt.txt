@@ -1,0 +1,37 @@
+MEMORIA DINAMICA
+
+	asignacion: 
+		
+		char cadena[30]; // 30 asignaciones de memoria
+
+		char *puntero; // almacena una direccion de memoria
+
+	podemos manipular la memoria en tiempo de ejecucion
+
+	funcion malloc
+
+		recibe un valor entero
+		retorna un puntero
+
+	funcion free
+
+		libera la memoria
+		recibe como parametro el puntero
+
+	funcion realloc
+
+		puedo pedir mas o menos memoria
+		recibe 2 parametros, primero el puntero a redimensionar,
+		segundo el sizeof(tipo)*cantidad
+
+		conviene usar un auxiliar para guardar esa redimension
+		por si retorna NULL, asi no pierdo la informacion
+		
+		ptr2 = realloc( ptr , sizeof )
+		if(ptr2 != NULL) {
+			ptr = ptr2;
+		}
+
+
+	NO SE PUEDE HACER FREE 2 VECES SEGUIDAS DEL MISMO PUNTERO
+	NO SE PUEDE HACER FREE DE NULL
