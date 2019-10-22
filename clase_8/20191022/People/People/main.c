@@ -17,9 +17,9 @@ int main()
     }
     for(i = 0; i < 10; i++)
     {
-        printf("\nAge: %2d",person_getAge(personArray[i]));
+        printf("\nAge: %02d",person_getAge(personArray[i]));
     }
-    scanf(" ");
+    system("pause");
     return 0;
 }
 
