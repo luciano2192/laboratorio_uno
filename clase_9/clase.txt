@@ -1,0 +1,15 @@
+ARCHIVOS
+
+	DE TEXTO: lo podemos leer
+
+	trabaja con cadenas de caracteres	
+
+	BINARIOS: es ilegible, para leerlo hay que trabajarlo con programacion
+	
+	trabajo con datos de tipo struct
+
+	----
+
+	puedo trabajar el archivo como texto y despues pasarlo a binario
+
+	para eso usar las funciones atoi(), atof() y sprintf()
