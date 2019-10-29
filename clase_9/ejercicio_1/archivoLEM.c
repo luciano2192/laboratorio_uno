@@ -42,7 +42,7 @@ int main (void)
 
    /* Busqueda */
    system("cls");
-   printf("Buscar legajo: ");
+   printf("Legajo: ");
    scanf("%d", &legajoAux);
 
    //se lleva el indicador de posición al principio para comenzar a leer
