@@ -13,3 +13,12 @@ ARCHIVOS
 	puedo trabajar el archivo como texto y despues pasarlo a binario
 
 	para eso usar las funciones atoi(), atof() y sprintf()
+
+	-----
+
+	la lectura es del disco a la memoria // fread()
+
+	la escritura de la memoria al disco // fwrite()
+
+
+	
