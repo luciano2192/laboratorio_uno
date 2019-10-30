@@ -74,6 +74,9 @@ int controller_removeEmployee(LinkedList* pArrayListEmployee)
  */
 int controller_ListEmployee(LinkedList* pArrayListEmployee)
 {
+    hacer for, dentro llget
+    declaro una estructura para guardar los datos
+    los getter y despues el printf
     return 1;
 }
 

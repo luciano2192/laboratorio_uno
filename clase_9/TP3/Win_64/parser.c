@@ -16,7 +16,7 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee) {
     Employee *empleado;
 
     char varId[128],varNombre[128],varHoras[128],varSueldo[128];
-    int r,i=0;
+    int r;
 
     auxFile = fopen("data.csv","r");
 
@@ -26,20 +26,16 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee) {
 
     r = fscanf(auxFile,"%[^,],%[^,],%[^,],%[^\n]\n",varId,varNombre,varHoras,varSueldo);
 
-    do{
+    while( !feof(auxFile) ) {
         r = fscanf(auxFile,"%[^,],%[^,],%[^,],%[^\n]\n",varId,varNombre,varHoras,varSueldo);
         empleado = employee_newParametros( varId , varNombre , varHoras , varSueldo );
         if(r==4){
-            fprintf(pArchivo,"%s - %s - %s - %s\n",var1,var2,var3,var4);
-            arrayPersonas[i].id = atoi(var1);
-            strncpy(arrayPersonas[i].nombre,var2,sizeof(arrayPersonas[i].nombre));
-            strncpy(arrayPersonas[i].apellido,var3,sizeof(arrayPersonas[i].apellido));
-            arrayPersonas[i].edad = atoi(var4);
-            i++;
+            ll_add( pArrayListEmployee , empleado );
         }
-        else
+        if(feof(auxFile)){
             break;
-    }while(!feof(pFile) && i<len);
+        }
+    };
 
     fclose(pFile);
     fclose(pArchivo);

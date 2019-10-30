@@ -24,17 +24,35 @@ void employee_delete(Employee* this) {
 };
 
 int employee_setId(Employee* this,int id) {
+    int resultado = 0;
+
     if( id > 0 ) {
         this->id = id;
+        resultado = 1;
     }
+
+    return resultado;
 };
 
 int employee_getId(Employee* this,int* id) {
-    *id = this->id;
+    int resultado = 0;
+
+    if( id != NULL ){
+        *id = this->id;
+    }
+
+    return resultado;
 };
 
 int employee_setNombre(Employee* this,char* nombre) {
-    strcpy( this->nombre , nombre );
+    int resultado = 0;
+
+    if(nombre != NULL ) {
+        strcpy( this->nombre , nombre );
+        resultado = 1;
+    }
+
+    return resultado;
 };
 
 int employee_getNombre(Employee* this,char* nombre) {
