@@ -9,11 +9,13 @@ Employee* employee_new() {
 
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldoStr) {
 
-    Employee *empleado;
+    Employee *empleado = employee_new();
+
     employee_setId(empleado,atoi(idStr));
     employee_setNombre(empleado,nombreStr);
     employee_setHorasTrabajadas(empleado,horasTrabajadasStr);
     employee_setSueldo(empleado,sueldoStr);
+
     return empleado;
 };
 
