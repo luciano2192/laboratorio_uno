@@ -21,7 +21,7 @@
 
 int main()
 {
-    int option = 0;
+    int option;
 
     option = menu();
 
@@ -34,7 +34,7 @@ int main()
                 controller_loadFromText("data.csv",listaEmpleados);
                 break;
              case 2:
-                controller_loadFromText("data.csv",listaEmpleados);
+                controller_loadFromBinary("data.csv",listaEmpleados);
                 break;
         }
     }while(option != 10);
