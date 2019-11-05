@@ -64,7 +64,7 @@
 
 1572903876 d:\laboratorio_uno\clase_11\tp3\win_64\controller.h
 
-1572903876 d:\laboratorio_uno\clase_11\tp3\win_64\employee.h
+1572915566 d:\laboratorio_uno\clase_11\tp3\win_64\employee.h
 
 1572912090 source:d:\laboratorio_uno\clase_11\tp3\win_64\parser.c
 	<stdio.h>
@@ -72,7 +72,7 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1572915027 source:d:\laboratorio_uno\clase_11\tp3\win_64\controller.c
+1572915656 source:d:\laboratorio_uno\clase_11\tp3\win_64\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -87,4 +87,16 @@
 	"LinkedList.h"
 
 1572913408 d:\laboratorio_uno\clase_11\tp3\win_64\utn.h
+
+1572915158 d:\laboratorio_uno\clase_11\tp3\win_64\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1572915158 source:d:\laboratorio_uno\clase_11\tp3\win_64\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
 
