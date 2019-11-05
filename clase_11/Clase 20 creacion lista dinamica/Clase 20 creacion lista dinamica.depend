@@ -49,3 +49,19 @@
 	<ctype.h>
 	"utn.h"
 
+1559606292 source:d:\laboratorio_uno\clase_11\clase 20 creacion lista dinamica\f.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"f.h"
+	"utn.h"
+
+1559606224 d:\laboratorio_uno\clase_11\clase 20 creacion lista dinamica\f.h
+
+1559606252 source:d:\laboratorio_uno\clase_11\clase 20 creacion lista dinamica\main.c
+	<stdio.h>
+	<stdlib.h>
+	"f.h"
+	"utn.h"
+
