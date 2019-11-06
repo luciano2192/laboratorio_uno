@@ -53,40 +53,41 @@
 	"LinkedList.h"
 	"Employee.h"
 
-1572915891 source:d:\laboratorio_uno\clase_11\tp3\win_64\main.c
+1572992739 source:d:\laboratorio_uno\clase_11\tp3\win_64\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Controller.h"
 	"Employee.h"
 
-1572903876 d:\laboratorio_uno\clase_11\tp3\win_64\linkedlist.h
+1572990681 d:\laboratorio_uno\clase_11\tp3\win_64\linkedlist.h
 
-1572915913 d:\laboratorio_uno\clase_11\tp3\win_64\controller.h
+1572990681 d:\laboratorio_uno\clase_11\tp3\win_64\controller.h
 
-1572915566 d:\laboratorio_uno\clase_11\tp3\win_64\employee.h
+1572990681 d:\laboratorio_uno\clase_11\tp3\win_64\employee.h
 
-1572912090 source:d:\laboratorio_uno\clase_11\tp3\win_64\parser.c
+1572998699 source:d:\laboratorio_uno\clase_11\tp3\win_64\parser.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
 
-1572915787 source:d:\laboratorio_uno\clase_11\tp3\win_64\controller.c
+1572997991 source:d:\laboratorio_uno\clase_11\tp3\win_64\controller.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
 	"Employee.h"
+	"parser.h"
 	"utn.h"
 
-1572912931 source:d:\laboratorio_uno\clase_11\tp3\win_64\employee.c
+1572990681 source:d:\laboratorio_uno\clase_11\tp3\win_64\employee.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"Employee.h"
 	"LinkedList.h"
 
-1572913408 d:\laboratorio_uno\clase_11\tp3\win_64\utn.h
+1572990681 d:\laboratorio_uno\clase_11\tp3\win_64\utn.h
 
 1572915158 d:\laboratorio_uno\clase_11\tp3\win_64\utn.c
 	<stdio.h>
@@ -94,9 +95,11 @@
 	<ctype.h>
 	<string.h>
 
-1572915158 source:d:\laboratorio_uno\clase_11\tp3\win_64\utn.c
+1572990681 source:d:\laboratorio_uno\clase_11\tp3\win_64\utn.c
 	<stdio.h>
 	<stdlib.h>
 	<ctype.h>
 	<string.h>
+
+1572990681 d:\laboratorio_uno\clase_11\tp3\win_64\parser.h
 
