@@ -35,8 +35,6 @@ int parser_EmployeeFromText(FILE* pFile , LinkedList* pArrayListEmployee) {
         }
     }while( !feof(auxFile) && i<r );
 
-    fclose(auxFile);
-
     return i;
 }
 

@@ -12,11 +12,14 @@ Employee* employee_new() {
 Employee* employee_newParametros(char* idStr,char* nombreStr,char* horasTrabajadasStr, char* sueldoStr) {
 
     Employee *empleado = employee_new();
-
-    employee_setId(empleado,atoi(idStr));
-    employee_setNombre(empleado,nombreStr);
-    employee_setHorasTrabajadas(empleado,horasTrabajadasStr);
-    employee_setSueldo(empleado,sueldoStr);
+    int id , horas , sueldo;
+    id = atoi( idStr );
+    horas = atoi( horasTrabajadasStr );
+    sueldo = atoi( sueldoStr );
+    employee_setId( empleado , id );
+    employee_setNombre( empleado , nombreStr );
+    employee_setHorasTrabajadas( empleado , horas );
+    employee_setSueldo( empleado , sueldo );
 
     return empleado;
 };
