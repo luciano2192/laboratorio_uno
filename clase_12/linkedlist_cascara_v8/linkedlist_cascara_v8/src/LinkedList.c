@@ -94,16 +94,9 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 
         pNuevoNodo = (Node*)malloc(sizeof(Node));
 
-        if( nodeIndex == 0 ) {
-            if( this->pFirstNode == NULL ) {
-                pNuevoNodo->pElement = pElement;
-                this->pFirstNode = pNuevoNodo;
-                pNuevoNodo->pNextNode = NULL;
-            }
-        } else {
-            if( pNuevoNodo != NULL ) {
-                pAuxNodo = getNode( this , (nodeIndex-1) );
-            }
+        if( pNuevoNodo != NULL ) {
+            pNuevoNodo->pElement = pElement;
+            pNuevoNodo->pNextNode = NULL;
         }
 
         returnAux = 0;
