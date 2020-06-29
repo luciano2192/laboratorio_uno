@@ -13,3 +13,4 @@ int controller_cantPasajerosADestinoX(LinkedList* pArrayListVuelos);
 int controller_cargarVuelosCortos( LinkedList* pArrayList );
 int controller_saveVuelosCortos(char* path, LinkedList* pArrayList);
 int controller_ListVuelosDestinoX(LinkedList* pArrayListVuelos,LinkedList* pArrayListPilotos);
+int controller_ListVuelosFiltrandoPiloto(LinkedList* pArrayListVuelos,LinkedList* pArrayListPilotos);

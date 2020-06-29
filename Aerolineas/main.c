@@ -35,7 +35,7 @@ int main()
                 controller_ListVuelosDestinoX( listaVuelos , listaPilotos );
                 break;
             case 7:
-
+                controller_ListVuelosFiltrandoPiloto( listaVuelos , listaPilotos );
                 break;
             case 8:
                 break;

@@ -91,7 +91,7 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
 {
     int returnAux = -1;
     Node* prev;
-    Node* next;
+    Node* next = NULL;
     Node* nuevoNodo;
 
     if( this != NULL && nodeIndex >= 0 && nodeIndex <= ll_len(this) ) {
@@ -140,8 +140,8 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
 int ll_add(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
-    int indice = 0;
-    Node* actual;
+    //int indice = 0;
+    //Node* actual;
 
     if( this != NULL ) {
         addNode( this , ll_len(this) , pElement );
@@ -187,7 +187,7 @@ int ll_set(LinkedList* this, int index,void* pElement)
 {
     int returnAux = -1;
     Node* actual;
-    int cantidad;
+    //int cantidad;
 
     if( this != NULL && index >= 0 && index <= ll_len(this) ) {
         actual = getNode( this , index );
@@ -213,7 +213,7 @@ int ll_remove(LinkedList* this,int index)
     int returnAux = -1;
     Node* actual;
     Node* prev;
-    int indice = 0;
+    //int indice = 0;
 
     if( this != NULL && index >= 0 && index <= ll_len(this) ) {
         actual = getNode( this , index );
@@ -345,7 +345,7 @@ int ll_isEmpty(LinkedList* this)
 int ll_push(LinkedList* this, int index, void* pElement)
 {
     int returnAux = -1;
-    Node* nodo;
+    //Node* nodo;
     if( this != NULL && index >= 0 && index <= ll_len(this) ) {
         if( addNode(this,index,pElement) == 0 ) {
             returnAux = 0;
@@ -520,3 +520,37 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
     return returnAux;
 }
 
+int ll_count(LinkedList* this, int (*fn)(void* element))
+{
+    int returnAux =-1;
+    int acumulador = 0;
+    void* pAux;
+
+    if( this != NULL && fn != NULL ) {
+        for( int i = 0 ; i < ll_len(this) ; i++ ) {
+            pAux = ll_get(this,i);
+            acumulador += fn(pAux);
+        }
+        returnAux = acumulador;
+    }
+
+    return returnAux;
+}
+
+LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void*)){
+
+    LinkedList* listaFiltrada;
+
+    if( this != NULL && pFunc != NULL ){
+        listaFiltrada = ll_newLinkedList();
+        if( listaFiltrada != NULL ) {
+            for( int i = 0 ; i < ll_len(this) ; i++ ) {
+                if( pFunc(ll_get(this, i)) == 1 ) {
+                    ll_add( listaFiltrada , ll_get(this, i) );
+                }
+            }
+        }
+    }
+
+    return listaFiltrada;
+}

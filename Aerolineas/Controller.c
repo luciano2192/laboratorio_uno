@@ -135,15 +135,9 @@ int controller_ListVuelos(LinkedList* pArrayListVuelos,LinkedList* pArrayListPil
 int controller_cantPasajeros(LinkedList* pArrayListVuelos)
 {
     int salida = -1;
-    int lista;
     int cantidadPasajeros = 0;
-    Vuelo* vuelo = NULL;
     if( pArrayListVuelos != NULL ) {
-        lista = ll_len(pArrayListVuelos);
-        for( int i = 0 ; i < lista ; i++ ) {
-            vuelo = ll_get(pArrayListVuelos,i);
-            cantidadPasajeros += vuelo->cantPasajeros;
-        }
+        cantidadPasajeros = ll_count(pArrayListVuelos,vuelo_contarPasajeros);
         salida = 0;
     }
     if( salida == 0 ) {
@@ -152,7 +146,7 @@ int controller_cantPasajeros(LinkedList* pArrayListVuelos)
     }
     return salida;
 }
-
+/*
 int controller_cantPasajerosADestinoX(LinkedList* pArrayListVuelos)
 {
     int salida = -1;
@@ -178,20 +172,44 @@ int controller_cantPasajerosADestinoX(LinkedList* pArrayListVuelos)
         system("pause");
     }
     return salida;
+}*/
+
+int controller_cantPasajerosADestinoX(LinkedList* pArrayListVuelos)
+{
+    int salida = -1;
+    int cantidadPasajeros = 0;
+    LinkedList* listaFiltrada = NULL;
+    if( pArrayListVuelos != NULL ) {
+        listaFiltrada = ll_filter(pArrayListVuelos,vuelo_filtrarDestinoIrlanda);
+        if( listaFiltrada != NULL ) {
+            cantidadPasajeros = ll_count(listaFiltrada,vuelo_contarPasajeros);
+            salida = 0;
+        }
+    }
+    if( salida == 0 ) {
+        printf( "\nLA CANTIDAD DE PASAJEROS AL DESTINO SELECCIONADO ES DE :%d \n" , cantidadPasajeros );
+        system("pause");
+    }
+    return salida;
 }
 
 int controller_cargarVuelosCortos( LinkedList* pArrayList ) {
     int salida = -1;
     char archivo[50];
-    getDatoGenericoString( archivo , "Ingrese nombre del archivo: " , "ERROR ! ingrese nuevamente el nombre" , 50 );
-    formatearString(archivo);
-    strtok( archivo , "\n" );
-    if( controller_saveVuelosCortos(archivo,pArrayList) == 0 ) {
-        salida = 0;
+    LinkedList* listaFiltrada = NULL;
+    if( pArrayList != NULL ) {
+        getDatoGenericoString( archivo , "Ingrese nombre del archivo: " , "ERROR ! ingrese nuevamente el nombre" , 50 );
+        formatearString(archivo);
+        strtok( archivo , "\n" );
+        listaFiltrada = ll_filter(pArrayList,vuelo_filtrarVuelosConDuracionMenorA3Horas);
+        if( controller_saveVuelosCortos(archivo,listaFiltrada) == 0 ) {
+            salida = 0;
+        }
     }
     return salida;
 }
 
+/*
 int controller_saveVuelosCortos(char* path, LinkedList* pArrayList)
 {
     int salida = -1;
@@ -213,7 +231,7 @@ int controller_saveVuelosCortos(char* path, LinkedList* pArrayList)
         if( lista > 0 ) {
             pFile = fopen( path , "w");
             if( pFile != NULL ) {
-                fprintf( pFile , "id,nombre,horasTrabajadas,sueldo\n" );
+                fprintf( pFile , "idVuelo,idAvion,idPiloto,fecha,destino,cantPasajeros,horaDespegue,horaLlegada\n" );
                 for( int i = 0 ; i < lista ; i++ ) {
                     vuelo = (Vuelo*)ll_get(pArrayList,i);
                     if( vuelo != NULL ) {
@@ -235,7 +253,67 @@ int controller_saveVuelosCortos(char* path, LinkedList* pArrayList)
                                                                          , cantPasajeros
                                                                          , horaDespegue
                                                                          , horaLlegada);
+                        } else {
+                            break;
                         }
+                        salida = 0;
+                    } else {
+                        break;
+                    }
+                }
+                fclose( pFile );
+            }
+        }
+    }
+    if( salida == 0 ) {
+        printf("\nDATOS GUARDADOS CON EXITO.");
+    } else {
+        printf("\nERROR AL GUARDAR LOS DATOS.");
+    }
+    return salida;
+}
+*/
+
+
+int controller_saveVuelosCortos(char* path, LinkedList* pArrayList)
+{
+    int salida = -1;
+    int lista;
+    int idVuelo;
+    int idAvion;
+    int idPiloto;
+    char fecha[10];
+    char destino[100];
+    int cantPasajeros;
+    int horaDespegue;
+    int horaLlegada;
+    FILE* pFile;
+    Vuelo* vuelo = NULL;
+    if( path != NULL && pArrayList != NULL ) {
+        lista = ll_len( pArrayList );
+        if( lista > 0 ) {
+            pFile = fopen( path , "w");
+            if( pFile != NULL ) {
+                fprintf( pFile , "idVuelo,idAvion,idPiloto,fecha,destino,cantPasajeros,horaDespegue,horaLlegada\n" );
+                for( int i = 0 ; i < lista ; i++ ) {
+                    vuelo = (Vuelo*)ll_get(pArrayList,i);
+                    if( vuelo != NULL ) {
+                        vuelo_getIdVuelo(vuelo,&idVuelo);
+                        vuelo_getIdAvion(vuelo,&idAvion);
+                        vuelo_getIdPiloto(vuelo,&idPiloto);
+                        vuelo_FechaToString(vuelo,fecha);
+                        vuelo_getDestino(vuelo,destino);
+                        vuelo_getCantPasajeros(vuelo,&cantPasajeros);
+                        vuelo_getHoraDespegue(vuelo,&horaDespegue);
+                        vuelo_getHoraLlegada(vuelo,&horaLlegada);
+                        fprintf( pFile , "%d,%d,%d,%s,%s,%d,%d,%d\n" , idVuelo
+                                                                     , idAvion
+                                                                     , idPiloto
+                                                                     , fecha
+                                                                     , destino
+                                                                     , cantPasajeros
+                                                                     , horaDespegue
+                                                                     , horaLlegada);
                         salida = 0;
                     } else {
                         break;
@@ -310,55 +388,18 @@ int controller_ListVuelosDestinoX(LinkedList* pArrayListVuelos,LinkedList* pArra
     return salida;
 }
 
-int controller_ListVuelosSinPiloto(LinkedList* pArrayListVuelos,LinkedList* pArrayListPilotos)
+
+int controller_ListVuelosFiltrandoPiloto(LinkedList* pArrayListVuelos,LinkedList* pArrayListPilotos)
 {
     int salida = -1;
-    int auxIdPiloto;
-    int listaVuelos;
-    int cantidadVuelos = 0;
-    int idVuelo;
-    int idAvion;
-    int idPiloto;
-    char fecha[10];
-    char destino[100];
-    int cantPasajeros;
-    int horaDespegue;
-    int horaLlegada;
-    Vuelo* vuelo = NULL;
-    Piloto* piloto = NULL;
+    LinkedList* listaVuelosFiltrada = NULL;
 
     if( pArrayListVuelos != NULL && pArrayListPilotos != NULL ){
-        if( piloto_loadFromText("Pilotos.csv",pArrayListPilotos) == 1 ) {
-            listaVuelos = ll_len(pArrayListVuelos);
-            vuelo_columnasListaVuelos();
-            for( int i = 0 ; i < listaVuelos ; i++ ) {
-                vuelo = (Vuelo*)ll_get(pArrayListVuelos,i);
-                if( strcmp(auxDestino,vuelo->destino) == 0 ) {
-                    vuelo_getIdPiloto(vuelo,&idPiloto);
-                    piloto = piloto_buscarPorID( pArrayListPilotos , idPiloto );
-                    vuelo_getIdVuelo(vuelo,&idVuelo);
-                    vuelo_getIdAvion(vuelo,&idAvion);
-                    vuelo_FechaToString(vuelo,fecha);
-                    vuelo_getDestino(vuelo,destino);
-                    vuelo_getCantPasajeros(vuelo,&cantPasajeros);
-                    vuelo_getHoraDespegue(vuelo,&horaDespegue);
-                    vuelo_getHoraLlegada(vuelo,&horaLlegada);
-                    printf( "\n%6d %12d %22s %20s %20s %15d %15d %15d" , idVuelo
-                                                                       , idAvion
-                                                                       , piloto->nombre
-                                                                       , fecha
-                                                                       , destino
-                                                                       , cantPasajeros
-                                                                       , horaDespegue
-                                                                       , horaLlegada );
-                    cantidadVuelos++;
-                    if( cantidadVuelos%50 == 0 ) {
-                        printf( "\n\n");
-                        system("pause");
-                    }
-                }
+        listaVuelosFiltrada = ll_filter(pArrayListVuelos,piloto_filtrarPilotoAlexLifeson);
+        if( listaVuelosFiltrada != NULL ) {
+            if( controller_ListVuelos(listaVuelosFiltrada,pArrayListPilotos) == 0 ) {
+                salida = 0;
             }
-            salida = 0;
         }
     }
     return salida;

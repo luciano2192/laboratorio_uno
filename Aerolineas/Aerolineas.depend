@@ -14,17 +14,17 @@
 	"LinkedList.h"
 	"Vuelo.h"
 
-1592312333 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\linkedlist.h
+1593436025 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\linkedlist.h
 
-1593389550 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\vuelo.h
+1593440506 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\vuelo.h
 
-1593387611 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\linkedlist.c
+1593437794 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\linkedlist.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"LinkedList.h"
 
-1593403510 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\main.c
+1593447947 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -33,11 +33,11 @@
 	"Piloto.h"
 	"utn_funciones.h"
 
-1593403492 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\controller.h
+1593447969 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\controller.h
 
-1593388581 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\piloto.h
+1593436011 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\piloto.h
 
-1593388548 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\piloto.c
+1593437699 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\piloto.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -46,10 +46,11 @@
 	"utn_funciones.h"
 	"Controller.h"
 	"Piloto.h"
+	"Vuelo.h"
 
 1593390358 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\parser.h
 
-1593400008 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\vuelo.c
+1593450274 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\vuelo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -59,7 +60,7 @@
 	"Controller.h"
 	"utn_funciones.h"
 
-1593403442 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\controller.c
+1593448079 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

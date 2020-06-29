@@ -17,3 +17,4 @@ int piloto_getNombre(Piloto* this,char* nombre);
 int parser_PilotoFromText(FILE* pFile, LinkedList* pArrayList);
 int piloto_loadFromText(char* path, LinkedList* pArrayList);
 Piloto* piloto_buscarPorID( LinkedList* pArrayList , int id );
+int piloto_filtrarPilotoAlexLifeson(void* element);

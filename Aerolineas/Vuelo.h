@@ -43,3 +43,6 @@ int vuelo_setHoraLlegada(Vuelo* this,int horaLlegada);
 int vuelo_getHoraLlegada(Vuelo* this,int* horaLlegada);
 int vuelo_buscarVueloPorID( LinkedList* pArrayList , int id );
 int vuelo_FechaToString( Vuelo* this , char* stringFecha );
+int vuelo_contarPasajeros(void* this);
+int vuelo_filtrarDestinoIrlanda(void* element);
+int vuelo_filtrarVuelosConDuracionMenorA3Horas(void* element);

@@ -339,3 +339,51 @@ int vuelo_buscarVueloPorID( LinkedList* pArrayList , int id ) {
     }
     return indice;
 }
+
+int vuelo_contarPasajeros(void* this)
+{
+    int salida = -1;
+    int cantidadPasajeros;
+    Vuelo* vuelo = NULL;
+    if( this != NULL ) {
+        vuelo = (Vuelo*)this;
+        vuelo_getCantPasajeros(vuelo,&cantidadPasajeros);
+        salida = cantidadPasajeros;
+    }
+    return salida;
+}
+
+int vuelo_filtrarDestinoIrlanda(void* element) {
+    int salida = -1;
+    Vuelo* vuelo = NULL;
+    if( element != NULL ) {
+        vuelo = (Vuelo*)element;
+        if( strcmp("Irlanda",vuelo->destino) == 0 ) {
+            salida = 1;
+        } else {
+            salida = 0;
+        }
+    }
+    return salida;
+}
+
+int vuelo_filtrarVuelosConDuracionMenorA3Horas(void* element) {
+    int salida;
+    int horaDespegue;
+    int horaLlegada;
+    int totalHoras;
+    Vuelo* vuelo = NULL;
+    if( element != NULL ) {
+        vuelo = (Vuelo*)element;
+        vuelo_getHoraDespegue(vuelo,&horaDespegue);
+        vuelo_getHoraLlegada(vuelo,&horaLlegada);
+        totalHoras = horaLlegada - horaDespegue;
+        if( totalHoras  < 3 ) {
+            salida = 1;
+        } else {
+            salida = 0;
+        }
+    }
+
+    return salida;
+}

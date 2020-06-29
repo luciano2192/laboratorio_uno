@@ -6,6 +6,7 @@
 #include "utn_funciones.h"
 #include "Controller.h"
 #include "Piloto.h"
+#include "Vuelo.h"
 
 Piloto* piloto_new()
 {
@@ -142,4 +143,18 @@ Piloto* piloto_buscarPorID( LinkedList* pArrayList , int id ) {
         }
     }
     return piloto;
+}
+
+int piloto_filtrarPilotoAlexLifeson(void* element) {
+    int salida = -1;
+    Vuelo* vuelo = NULL;
+    if( element != NULL ) {
+        vuelo = (Vuelo*)element;
+        if( vuelo->idPiloto == 1 ) {
+            salida = 0;
+        } else {
+            salida = 1;
+        }
+    }
+    return salida;
 }
