@@ -23,16 +23,16 @@ int main()
                 controller_ListVuelos( listaVuelos , listaPilotos );
                 break;
             case 3:
-
+                controller_cantPasajeros( listaVuelos );
                 break;
             case 4:
-
+                controller_cantPasajerosADestinoX( listaVuelos );
                 break;
             case 5:
-
+                controller_cargarVuelosCortos( listaVuelos );
                 break;
             case 6:
-
+                controller_ListVuelosDestinoX( listaVuelos , listaPilotos );
                 break;
             case 7:
 

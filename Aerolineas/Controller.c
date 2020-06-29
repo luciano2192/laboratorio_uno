@@ -14,7 +14,7 @@ int menuPrincipal() {
         "\n1. Cargar archivo."
         "\n2. Imprimir vuelos."
         "\n3. Cantidad de pasajeros."
-        "\n4. Cantidad de pasajeros a Irlanda."
+        "\n4. Cantidad de pasajeros a X destino."
         "\n5. Filtrar vuelos cortos."
         "\n6. Listar vuelos a Portugal."
         "\n7. Filtrar a Alex Lifeson."
@@ -47,11 +47,10 @@ int controller_loadFromText(char* path, LinkedList* pArrayList)
 
 int controller_cargarArchivo( LinkedList* pArrayList ) {
     int salida = -1;
-    char archivo[200];
+    char archivo[50];
     getDatoGenericoString( archivo , "Ingrese nombre del archivo: " , "ERROR ! ingrese nuevamente el nombre" , 200 );
     formatearString(archivo);
-    sprintf(archivo,"%s%s",archivo,".csv");
-    printf("%s",archivo);
+    strtok( archivo , "\n" );
     if( strcmp(archivo,"Vuelos.csv") == 0 ) {
         if( controller_loadFromText(archivo,pArrayList) == 1 ) {
             salida = 0;
@@ -90,7 +89,6 @@ int controller_ListVuelos(LinkedList* pArrayListVuelos,LinkedList* pArrayListPil
     int idVuelo;
     int idAvion;
     int idPiloto;
-    char nombrePiloto[100];
     char fecha[10];
     char destino[100];
     int cantPasajeros;
@@ -109,15 +107,14 @@ int controller_ListVuelos(LinkedList* pArrayListVuelos,LinkedList* pArrayListPil
                 piloto = piloto_buscarPorID( pArrayListPilotos , idPiloto );
                 vuelo_getIdVuelo(vuelo,&idVuelo);
                 vuelo_getIdAvion(vuelo,&idAvion);
-                piloto_getNombre(piloto,nombrePiloto);
                 vuelo_FechaToString(vuelo,fecha);
                 vuelo_getDestino(vuelo,destino);
                 vuelo_getCantPasajeros(vuelo,&cantPasajeros);
                 vuelo_getHoraDespegue(vuelo,&horaDespegue);
                 vuelo_getHoraLlegada(vuelo,&horaLlegada);
-                printf( "\n%4d %17d %20s %20s %20s %20d %20d %20d" , idVuelo
+                printf( "\n%6d %12d %22s %20s %20s %15d %15d %15d" , idVuelo
                                                                    , idAvion
-                                                                   , nombrePiloto
+                                                                   , piloto->nombre
                                                                    , fecha
                                                                    , destino
                                                                    , cantPasajeros
@@ -127,6 +124,238 @@ int controller_ListVuelos(LinkedList* pArrayListVuelos,LinkedList* pArrayListPil
                 if( cantidadVuelos%50 == 0 ) {
                     printf( "\n\n");
                     system("pause");
+                }
+            }
+            salida = 0;
+        }
+    }
+    return salida;
+}
+
+int controller_cantPasajeros(LinkedList* pArrayListVuelos)
+{
+    int salida = -1;
+    int lista;
+    int cantidadPasajeros = 0;
+    Vuelo* vuelo = NULL;
+    if( pArrayListVuelos != NULL ) {
+        lista = ll_len(pArrayListVuelos);
+        for( int i = 0 ; i < lista ; i++ ) {
+            vuelo = ll_get(pArrayListVuelos,i);
+            cantidadPasajeros += vuelo->cantPasajeros;
+        }
+        salida = 0;
+    }
+    if( salida == 0 ) {
+        printf( "\nLA CANTIDAD TOTAL DE PASAJEROS ES DE :%d \n" , cantidadPasajeros );
+        system("pause");
+    }
+    return salida;
+}
+
+int controller_cantPasajerosADestinoX(LinkedList* pArrayListVuelos)
+{
+    int salida = -1;
+    char destino[100];
+    int lista;
+    int cantidadPasajeros = 0;
+    Vuelo* vuelo = NULL;
+    if( pArrayListVuelos != NULL ) {
+        lista = ll_len(pArrayListVuelos);
+        getDatoGenericoString( destino , "Ingrese el destino: " , "ERROR ! ingrese nuevamente el destino" , 100 );
+        formatearString( destino );
+        strtok( destino , "\n" );
+        for( int i = 0 ; i < lista ; i++ ) {
+            vuelo = ll_get(pArrayListVuelos,i);
+            if( strcmp(destino,vuelo->destino) == 0 ) {
+                cantidadPasajeros += vuelo->cantPasajeros;
+            }
+        }
+        salida = 0;
+    }
+    if( salida == 0 ) {
+        printf( "\nLA CANTIDAD DE PASAJEROS A %s ES DE :%d \n" , destino , cantidadPasajeros );
+        system("pause");
+    }
+    return salida;
+}
+
+int controller_cargarVuelosCortos( LinkedList* pArrayList ) {
+    int salida = -1;
+    char archivo[50];
+    getDatoGenericoString( archivo , "Ingrese nombre del archivo: " , "ERROR ! ingrese nuevamente el nombre" , 50 );
+    formatearString(archivo);
+    strtok( archivo , "\n" );
+    if( controller_saveVuelosCortos(archivo,pArrayList) == 0 ) {
+        salida = 0;
+    }
+    return salida;
+}
+
+int controller_saveVuelosCortos(char* path, LinkedList* pArrayList)
+{
+    int salida = -1;
+    int lista;
+    int idVuelo;
+    int idAvion;
+    int idPiloto;
+    char fecha[10];
+    char destino[100];
+    int cantPasajeros;
+    int horaDespegue;
+    int horaLlegada;
+    int horasVuelo;
+    FILE* pFile;
+    Vuelo* vuelo = NULL;
+
+    if( path != NULL && pArrayList != NULL ) {
+        lista = ll_len( pArrayList );
+        if( lista > 0 ) {
+            pFile = fopen( path , "w");
+            if( pFile != NULL ) {
+                fprintf( pFile , "id,nombre,horasTrabajadas,sueldo\n" );
+                for( int i = 0 ; i < lista ; i++ ) {
+                    vuelo = (Vuelo*)ll_get(pArrayList,i);
+                    if( vuelo != NULL ) {
+                        vuelo_getIdVuelo(vuelo,&idVuelo);
+                        vuelo_getIdAvion(vuelo,&idAvion);
+                        vuelo_getIdPiloto(vuelo,&idPiloto);
+                        vuelo_FechaToString(vuelo,fecha);
+                        vuelo_getDestino(vuelo,destino);
+                        vuelo_getCantPasajeros(vuelo,&cantPasajeros);
+                        vuelo_getHoraDespegue(vuelo,&horaDespegue);
+                        vuelo_getHoraLlegada(vuelo,&horaLlegada);
+                        horasVuelo = horaDespegue - horaLlegada;
+                        if( horasVuelo < 3) {
+                            fprintf( pFile , "%d,%d,%d,%s,%s,%d,%d,%d\n" , idVuelo
+                                                                         , idAvion
+                                                                         , idPiloto
+                                                                         , fecha
+                                                                         , destino
+                                                                         , cantPasajeros
+                                                                         , horaDespegue
+                                                                         , horaLlegada);
+                        }
+                        salida = 0;
+                    } else {
+                        break;
+                    }
+                }
+                fclose( pFile );
+            }
+        }
+    }
+    if( salida == 0 ) {
+        printf("\nDATOS GUARDADOS CON EXITO.");
+    } else {
+        printf("\nERROR AL GUARDAR LOS DATOS.");
+    }
+    return salida;
+}
+
+int controller_ListVuelosDestinoX(LinkedList* pArrayListVuelos,LinkedList* pArrayListPilotos)
+{
+    int salida = -1;
+    char auxDestino[100];
+    int listaVuelos;
+    int cantidadVuelos = 0;
+    int idVuelo;
+    int idAvion;
+    int idPiloto;
+    char fecha[10];
+    char destino[100];
+    int cantPasajeros;
+    int horaDespegue;
+    int horaLlegada;
+    Vuelo* vuelo = NULL;
+    Piloto* piloto = NULL;
+
+    if( pArrayListVuelos != NULL && pArrayListPilotos != NULL ){
+        if( piloto_loadFromText("Pilotos.csv",pArrayListPilotos) == 1 ) {
+            listaVuelos = ll_len(pArrayListVuelos);
+            getDatoGenericoString( auxDestino , "Ingrese el destino: " , "ERROR ! ingrese nuevamente el destino" , 100 );
+            formatearString(auxDestino);
+            strtok( auxDestino , "\n" );
+            vuelo_columnasListaVuelos();
+            for( int i = 0 ; i < listaVuelos ; i++ ) {
+                vuelo = (Vuelo*)ll_get(pArrayListVuelos,i);
+                if( strcmp(auxDestino,vuelo->destino) == 0 ) {
+                    vuelo_getIdPiloto(vuelo,&idPiloto);
+                    piloto = piloto_buscarPorID( pArrayListPilotos , idPiloto );
+                    vuelo_getIdVuelo(vuelo,&idVuelo);
+                    vuelo_getIdAvion(vuelo,&idAvion);
+                    vuelo_FechaToString(vuelo,fecha);
+                    vuelo_getDestino(vuelo,destino);
+                    vuelo_getCantPasajeros(vuelo,&cantPasajeros);
+                    vuelo_getHoraDespegue(vuelo,&horaDespegue);
+                    vuelo_getHoraLlegada(vuelo,&horaLlegada);
+                    printf( "\n%6d %12d %22s %20s %20s %15d %15d %15d" , idVuelo
+                                                                       , idAvion
+                                                                       , piloto->nombre
+                                                                       , fecha
+                                                                       , destino
+                                                                       , cantPasajeros
+                                                                       , horaDespegue
+                                                                       , horaLlegada );
+                    cantidadVuelos++;
+                    if( cantidadVuelos%50 == 0 ) {
+                        printf( "\n\n");
+                        system("pause");
+                    }
+                }
+            }
+            salida = 0;
+        }
+    }
+    return salida;
+}
+
+int controller_ListVuelosSinPiloto(LinkedList* pArrayListVuelos,LinkedList* pArrayListPilotos)
+{
+    int salida = -1;
+    int auxIdPiloto;
+    int listaVuelos;
+    int cantidadVuelos = 0;
+    int idVuelo;
+    int idAvion;
+    int idPiloto;
+    char fecha[10];
+    char destino[100];
+    int cantPasajeros;
+    int horaDespegue;
+    int horaLlegada;
+    Vuelo* vuelo = NULL;
+    Piloto* piloto = NULL;
+
+    if( pArrayListVuelos != NULL && pArrayListPilotos != NULL ){
+        if( piloto_loadFromText("Pilotos.csv",pArrayListPilotos) == 1 ) {
+            listaVuelos = ll_len(pArrayListVuelos);
+            vuelo_columnasListaVuelos();
+            for( int i = 0 ; i < listaVuelos ; i++ ) {
+                vuelo = (Vuelo*)ll_get(pArrayListVuelos,i);
+                if( strcmp(auxDestino,vuelo->destino) == 0 ) {
+                    vuelo_getIdPiloto(vuelo,&idPiloto);
+                    piloto = piloto_buscarPorID( pArrayListPilotos , idPiloto );
+                    vuelo_getIdVuelo(vuelo,&idVuelo);
+                    vuelo_getIdAvion(vuelo,&idAvion);
+                    vuelo_FechaToString(vuelo,fecha);
+                    vuelo_getDestino(vuelo,destino);
+                    vuelo_getCantPasajeros(vuelo,&cantPasajeros);
+                    vuelo_getHoraDespegue(vuelo,&horaDespegue);
+                    vuelo_getHoraLlegada(vuelo,&horaLlegada);
+                    printf( "\n%6d %12d %22s %20s %20s %15d %15d %15d" , idVuelo
+                                                                       , idAvion
+                                                                       , piloto->nombre
+                                                                       , fecha
+                                                                       , destino
+                                                                       , cantPasajeros
+                                                                       , horaDespegue
+                                                                       , horaLlegada );
+                    cantidadVuelos++;
+                    if( cantidadVuelos%50 == 0 ) {
+                        printf( "\n\n");
+                        system("pause");
+                    }
                 }
             }
             salida = 0;
@@ -168,50 +397,6 @@ int controller_sortEmployee(LinkedList* pArrayListEmployee)
     }
     return salida;
 }
-
-
-int controller_saveAsText(char* path, LinkedList* pArrayListEmployee)
-{
-    int salida = -1;
-    int lista;
-    int id;
-    int horasTrabajadas;
-    int sueldo;
-    char nombre[128];
-    FILE* pFile;
-    Employee* empleado = NULL;
-
-    if( path != NULL && pArrayListEmployee != NULL ) {
-        lista = ll_len( pArrayListEmployee );
-        if( lista > 0 ) {
-            pFile = fopen( path , "w");
-            if( pFile != NULL ) {
-                fprintf( pFile , "id,nombre,horasTrabajadas,sueldo\n" );
-                for( int i = 0 ; i < lista ; i++ ) {
-                    empleado = (Employee*)ll_get( pArrayListEmployee , i );
-                    if( empleado != NULL ) {
-                        employee_getId( empleado , &id );
-                        employee_getNombre( empleado , nombre );
-                        employee_getHorasTrabajadas( empleado , &horasTrabajadas );
-                        employee_getSueldo( empleado , &sueldo );
-                        fprintf( pFile , "%d,%s,%d,%d\n" , id , nombre , horasTrabajadas , sueldo );
-                        salida = 0;
-                    } else {
-                        break;
-                    }
-                }
-                fclose( pFile );
-            }
-        }
-    }
-    if( salida == 0 ) {
-        printf("\nDATOS GUARDADOS CON EXITO.");
-    } else {
-        printf("\nERROR AL GUARDAR LOS DATOS.");
-    }
-    return salida;
-}
-
 
 int controller_saveAsBinary(char* path, LinkedList* pArrayListEmployee)
 {

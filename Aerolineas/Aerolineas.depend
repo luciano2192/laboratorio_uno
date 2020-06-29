@@ -24,7 +24,7 @@
 	<string.h>
 	"LinkedList.h"
 
-1593387699 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\main.c
+1593403510 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\main.c
 	<stdio.h>
 	<stdlib.h>
 	"LinkedList.h"
@@ -33,7 +33,7 @@
 	"Piloto.h"
 	"utn_funciones.h"
 
-1593387675 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\controller.h
+1593403492 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\controller.h
 
 1593388581 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\piloto.h
 
@@ -49,7 +49,7 @@
 
 1593390358 c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\parser.h
 
-1593389530 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\vuelo.c
+1593400008 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\vuelo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -59,7 +59,7 @@
 	"Controller.h"
 	"utn_funciones.h"
 
-1593391897 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\controller.c
+1593403442 source:c:\users\lucho\documents\utn\sparciallaboratorio\aerolineas\controller.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

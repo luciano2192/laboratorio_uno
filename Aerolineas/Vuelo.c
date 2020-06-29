@@ -56,46 +56,26 @@ Vuelo* vuelo_newParametros(char* idVuelo,char* idAvion,char* idPiloto,char* fech
 
 int vuelo_descomponerFecha(char* fecha , int *datoDia , int *datoMes , int *datoAnio ) {
     int salida = -1;
-    char dia[2];
-    char mes[2];
-    char anio[4];
+    char dia[10];
+    char mes[10];
+    char anio[10];
+    if( fecha != NULL ) {
 
-	if( fecha != NULL ) {
-        //----DIA
-        for( int i=0 ; i<3 ; i++ ) {
-            if( fecha[1] != '/' || fecha[1] != '-' ) {
-                dia[0]=fecha[0];
-                dia[1]=fecha[1];
-                break;
-            }
-        }
+        dia[0]=fecha[0];
+        dia[1]=fecha[1];
+        mes[0]=fecha[3];
+        mes[1]=fecha[4];
+        anio[0]=fecha[6];
+        anio[1]=fecha[7];
+        anio[2]=fecha[8];
+        anio[3]=fecha[9];
 
-        //----MES
-        for( int j=3 ; j<5 ; j++ ) {
-            if( fecha[3] != '/' || fecha[3] != '-' ) {
-                mes[0]=fecha[3];
-                mes[1]=fecha[4];
-                break;
-            }
-        }
-
-        //----AÑO
-        for( int k=6 ; k<10 ; k++ ) {
-            if( fecha[6] != '/' || fecha[6] != '-' ) {
-                anio[0]=fecha[6];
-                anio[1]=fecha[7];
-                anio[2]=fecha[8];
-                anio[3]=fecha[9];
-                break;
-            }
-        }
-
-        *datoDia = atoi(dia);
-        *datoMes = atoi(mes);
-        *datoAnio = atoi(anio);
+        *datoDia=atoi(dia);
+        *datoMes=atoi(mes);
+        *datoAnio=atoi(anio);
         salida = 0;
-	}
-	return salida;
+    }
+    return salida;
 }
 
 void vuelo_delete(Vuelo* this) {
